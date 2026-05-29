@@ -1,0 +1,150 @@
+// =============================================================
+// BildungsTandems – Basis-Styles & Reset (mobile-first)
+// =============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--bt-font);
+  font-size: var(--bt-fs-md);
+  line-height: 1.5;
+  color: var(--bt-text);
+  background: var(--bt-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 var(--bt-sp-2);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--bt-text);
+}
+
+p {
+  margin: 0 0 var(--bt-sp-3);
+}
+
+a {
+  color: var(--bt-primary-600);
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: var(--bt-fs-md);
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 3px solid var(--bt-primary-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// Hilfsklassen
+.bt-container {
+  padding: var(--bt-sp-4);
+}
+
+.bt-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bt-sp-4);
+}
+
+.bt-row {
+  display: flex;
+  align-items: center;
+  gap: var(--bt-sp-3);
+}
+
+.bt-muted {
+  color: var(--bt-text-muted);
+}
+
+.bt-soft {
+  color: var(--bt-text-soft);
+}
+
+.bt-section-title {
+  font-size: var(--bt-fs-lg);
+  font-weight: 800;
+  margin: var(--bt-sp-2) 0;
+}
+
+.bt-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--bt-sp-3);
+}
+
+// einfache Eingabefelder
+.bt-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--bt-sp-1);
+
+  label {
+    font-size: var(--bt-fs-sm);
+    font-weight: 700;
+    color: var(--bt-text-muted);
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    border: 1.5px solid var(--bt-border);
+    border-radius: var(--bt-radius-sm);
+    background: var(--bt-surface);
+    color: var(--bt-text);
+
+    &:focus {
+      outline: none;
+      border-color: var(--bt-primary-400);
+      box-shadow: 0 0 0 3px var(--bt-primary-100);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+  }
+}

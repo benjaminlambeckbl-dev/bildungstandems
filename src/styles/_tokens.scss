@@ -1,0 +1,73 @@
+// =============================================================
+// BildungsTandems – Design-Tokens
+// CI-nah: blaue Primärfarbe (Logo-Blau) + warmer Akzent.
+// Als CSS-Custom-Properties, damit Komponenten sie direkt nutzen.
+// =============================================================
+
+:root {
+  // --- Markenfarben ---
+  --bt-primary: #155a96; // Logo-Blau
+  --bt-primary-600: #1d6fb8;
+  --bt-primary-400: #4f97cf;
+  --bt-primary-100: #e6eff8;
+  --bt-primary-050: #f1f6fc;
+
+  --bt-accent: #f5a623; // warmer Akzent (Sonnengelb/Orange)
+  --bt-accent-600: #e08c0c;
+  --bt-accent-100: #fdf0d6;
+
+  // --- Funktionsfarben ---
+  --bt-success: #2f9e6f;
+  --bt-success-100: #e2f4ec;
+  --bt-warning: #e0a012;
+  --bt-warning-100: #fbf0d6;
+  --bt-danger: #d2453b;
+  --bt-danger-100: #fbe5e3;
+  --bt-info: #3a7bd5;
+
+  // --- Neutrale Töne ---
+  --bt-bg: #f4f7fb;
+  --bt-surface: #ffffff;
+  --bt-surface-alt: #f8fafc;
+  --bt-border: #e3e8ef;
+  --bt-text: #1c2733;
+  --bt-text-muted: #5c6b7a;
+  --bt-text-soft: #8a97a5;
+
+  // Rollen-Akzente (zur visuellen Unterscheidung der Bereiche)
+  --bt-role-coach: #1d6fb8;
+  --bt-role-teacher: #2f9e6f;
+  --bt-role-admin: #6b4db8;
+
+  // --- Typografie ---
+  --bt-font: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --bt-fs-xs: 0.75rem;
+  --bt-fs-sm: 0.875rem;
+  --bt-fs-md: 1rem;
+  --bt-fs-lg: 1.125rem;
+  --bt-fs-xl: 1.375rem;
+  --bt-fs-2xl: 1.75rem;
+
+  // --- Abstände ---
+  --bt-sp-1: 0.25rem;
+  --bt-sp-2: 0.5rem;
+  --bt-sp-3: 0.75rem;
+  --bt-sp-4: 1rem;
+  --bt-sp-5: 1.5rem;
+  --bt-sp-6: 2rem;
+
+  // --- Radien & Schatten ---
+  --bt-radius-sm: 8px;
+  --bt-radius: 14px;
+  --bt-radius-lg: 20px;
+  --bt-radius-pill: 999px;
+
+  --bt-shadow-sm: 0 1px 2px rgba(21, 90, 150, 0.06);
+  --bt-shadow: 0 4px 16px rgba(21, 90, 150, 0.08);
+  --bt-shadow-lg: 0 10px 30px rgba(21, 90, 150, 0.14);
+
+  // --- Layout ---
+  --bt-app-max: 480px; // Handy-Breite – als zentrierte "App" auf Desktop
+  --bt-nav-h: 64px;
+  --bt-safe-bottom: env(safe-area-inset-bottom, 0px);
+}

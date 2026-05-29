@@ -1,0 +1,51 @@
+<div class="shell" [attr.data-rolle]="rolle()">
+  <!-- Obere Leiste -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">BT</span>
+      <div class="brand-text">
+        <strong>BildungsTandems</strong>
+        <span class="rolle-tag">{{ rollenLabel() }}</span>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <a class="icon-btn" [routerLink]="chatLink()" aria-label="Chat">
+        💬
+        @if (ungelesenChat() > 0) {
+          <span class="dot">{{ ungelesenChat() }}</span>
+        }
+      </a>
+      @if (rolle() === 'coach') {
+        <a class="icon-btn" routerLink="/coach/nachrichten" aria-label="Benachrichtigungen">
+          🔔
+          @if (ungelesen() > 0) {
+            <span class="dot">{{ ungelesen() }}</span>
+          }
+        </a>
+      }
+      <button class="icon-btn" type="button" (click)="abmelden()" aria-label="Abmelden">⎋</button>
+    </div>
+  </header>
+
+  <!-- Inhalt -->
+  <main class="content">
+    <bt-pwa-banner />
+    <router-outlet />
+  </main>
+
+  <!-- Untere Navigation -->
+  <nav class="bottomnav">
+    @for (item of navItems(); track item.pfad) {
+      <a
+        class="navlink"
+        [routerLink]="item.pfad"
+        routerLinkActive="aktiv"
+        [routerLinkActiveOptions]="{ exact: !!item.exakt }"
+      >
+        <span class="navicon">{{ item.icon }}</span>
+        <span class="navlabel">{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+</div>

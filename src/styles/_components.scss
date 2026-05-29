@@ -1,0 +1,88 @@
+// =============================================================
+// BildungsTandems – wiederverwendbare UI-Klassen
+// =============================================================
+
+// ---- Buttons ----
+.bt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--bt-sp-2);
+  padding: 0.75rem 1.1rem;
+  border: none;
+  border-radius: var(--bt-radius-sm);
+  font-weight: 700;
+  font-size: var(--bt-fs-md);
+  line-height: 1;
+  background: var(--bt-surface-alt);
+  color: var(--bt-text);
+  transition: transform 0.05s ease, filter 0.15s ease, background 0.15s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.bt-btn--primary {
+  background: var(--bt-primary);
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: var(--bt-primary-600);
+  }
+}
+
+.bt-btn--accent {
+  background: var(--bt-accent);
+  color: #3a2a05;
+
+  &:hover:not(:disabled) {
+    background: var(--bt-accent-600);
+  }
+}
+
+.bt-btn--ghost {
+  background: transparent;
+  color: var(--bt-primary-600);
+  border: 1.5px solid var(--bt-border);
+}
+
+.bt-btn--danger {
+  background: var(--bt-danger);
+  color: #fff;
+}
+
+.bt-btn--block {
+  width: 100%;
+}
+
+.bt-btn--lg {
+  padding: 0.95rem 1.25rem;
+  font-size: var(--bt-fs-lg);
+}
+
+// ---- Chips / Tags ----
+.bt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--bt-radius-pill);
+  font-size: var(--bt-fs-xs);
+  font-weight: 700;
+  background: var(--bt-primary-100);
+  color: var(--bt-primary);
+}
+
+// ---- Listentrenner ----
+.bt-divider {
+  height: 1px;
+  background: var(--bt-border);
+  border: none;
+  margin: var(--bt-sp-3) 0;
+}
