@@ -7,6 +7,15 @@ der Zukunftsstiftung Bildung.
 Ältere Schüler:innen (**Coachs**) begleiten Grundschulkinder über ein Schuljahr,
 betreut von **Lehrkräften** und organisiert von der **Stiftung**.
 
+## 🔗 Live-Demo
+
+**https://benjaminlambeckbl-dev.github.io/bildungstandems/**
+
+Einfach öffnen und ein **Demo-Profil** wählen (Coach / Koordination / Organisation) –
+oder per Code anmelden (`BT-DEMO-2026`). Tipp: am Handy „Zum Startbildschirm hinzufügen".
+
+> Aktualisieren der Demo nach Änderungen: `npm run deploy`
+
 > **Status:** Klickbarer Prototyp mit Mock-Daten. Die Datenschicht ist so gekapselt,
 > dass später **Supabase (EU-Region, DSGVO-konform)** ohne UI-Änderungen andockt.
 
