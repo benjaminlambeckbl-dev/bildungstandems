@@ -3,6 +3,7 @@ import { DataService } from '../../core/data/data.service';
 import { PageHeaderComponent } from '../../shared/ui/page-header';
 import { ProgressBarComponent } from '../../shared/ui/progress-bar';
 import { VorlesenComponent } from '../../shared/ui/vorlesen';
+import { istGesperrt } from '../../shared/ui/gesperrt-badge';
 
 @Component({
   selector: 'bt-lernpfad-detail',
@@ -12,6 +13,13 @@ import { VorlesenComponent } from '../../shared/ui/vorlesen';
     @if (pfad(); as p) {
       <bt-page-header [titel]="p.titel" [zurueck]="true" />
 
+      @if (gesperrt()) {
+        <div class="gesperrt-box">
+          <span class="lock">🔒</span>
+          <h2>Noch nicht verfügbar</h2>
+          <p class="bt-muted">Dieser Lernpfad wird erst später im Schuljahr freigeschaltet.</p>
+        </div>
+      } @else {
       <div class="kopf">
         <span class="symbol">{{ p.symbol }}</span>
         <bt-progress [erledigt]="erledigtAnzahl()" [gesamt]="p.schritte.length" />
@@ -75,6 +83,7 @@ import { VorlesenComponent } from '../../shared/ui/vorlesen';
           <h2>Geschafft!</h2>
           <p class="bt-muted">Du hast den Lernpfad „{{ p.titel }}" abgeschlossen.</p>
         </div>
+      }
       }
     } @else {
       <bt-page-header titel="Lernpfad" [zurueck]="true" />
@@ -162,9 +171,13 @@ import { VorlesenComponent } from '../../shared/ui/vorlesen';
         font-size: var(--bt-fs-sm);
         margin: 0;
       }
-      .fertig-box {
+      .fertig-box,
+      .gesperrt-box {
         text-align: center;
         padding: var(--bt-sp-6) var(--bt-sp-4);
+      }
+      .gesperrt-box .lock {
+        font-size: 3rem;
       }
       .confetti {
         font-size: 3.5rem;
@@ -182,6 +195,7 @@ export class LernpfadDetailPage {
   readonly antwort = signal<number | null>(null);
 
   readonly pfad = computed(() => this.data.lernpfade().find((lp) => lp.id === this.id()));
+  readonly gesperrt = computed(() => istGesperrt(this.pfad()?.freigabeAb));
   readonly schritt = computed(() => this.pfad()?.schritte[this.idx()]);
   readonly letzterSchritt = computed(
     () => !!this.pfad() && this.idx() === this.pfad()!.schritte.length - 1,

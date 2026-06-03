@@ -19,6 +19,10 @@ import {
   TreffenProtokoll,
   ChatKanal,
   ChatNachricht,
+  Faq,
+  Formular,
+  FormularStatus,
+  TagesCheck,
 } from '../models/models';
 import {
   SCHULEN,
@@ -32,7 +36,10 @@ import {
   EINLADUNGSCODES,
   CHAT_KANAELE,
   CHAT_NACHRICHTEN,
+  FORMULARE,
+  TAGES_CHECKS,
 } from './mock-seed';
+import { FAQS } from './faq-seed';
 
 let idZaehler = 1000;
 function neueId(prefix: string): string {
@@ -54,6 +61,9 @@ export class MockDataService extends DataService {
   private readonly _reflexionen = signal<Reflexion[]>(REFLEXIONEN);
   private readonly _chatKanaele = signal<ChatKanal[]>(CHAT_KANAELE);
   private readonly _chatNachrichten = signal<ChatNachricht[]>(CHAT_NACHRICHTEN);
+  private readonly _faqs = signal<Faq[]>(FAQS);
+  private readonly _formulare = signal<Formular[]>(FORMULARE);
+  private readonly _tagesChecks = signal<TagesCheck[]>(TAGES_CHECKS);
 
   // Einladungscodes (Code → Nutzer-ID), seed + zur Laufzeit erzeugte.
   private readonly _codes = new Map<string, string>(
@@ -72,6 +82,9 @@ export class MockDataService extends DataService {
   readonly reflexionen = this._reflexionen.asReadonly();
   readonly chatKanaele = this._chatKanaele.asReadonly();
   readonly chatNachrichten = this._chatNachrichten.asReadonly();
+  readonly faqs = this._faqs.asReadonly();
+  readonly formulare = this._formulare.asReadonly();
+  readonly tagesChecks = this._tagesChecks.asReadonly();
 
   terminVorschlagen(
     daten: Omit<Termin, 'id' | 'status' | 'erinnerung'> & { erinnerung?: boolean },
@@ -254,5 +267,29 @@ export class MockDataService extends DataService {
     };
     this._chatKanaele.update((list) => [...list, kanal]);
     return kanal;
+  }
+
+  chatNachrichtAnpinnen(id: string): void {
+    this._chatNachrichten.update((list) =>
+      list.map((n) => (n.id === id ? { ...n, angepinnt: !n.angepinnt } : n)),
+    );
+  }
+
+  formularStatusSetzen(id: string, status: FormularStatus): void {
+    this._formulare.update((list) =>
+      list.map((f) => (f.id === id ? { ...f, status } : f)),
+    );
+  }
+
+  tagesCheckSpeichern(
+    daten: Omit<TagesCheck, 'id' | 'datum'> & { datum?: string },
+  ): TagesCheck {
+    const check: TagesCheck = {
+      ...daten,
+      id: neueId('tc'),
+      datum: daten.datum ?? new Date().toISOString(),
+    };
+    this._tagesChecks.update((list) => [...list, check]);
+    return check;
   }
 }

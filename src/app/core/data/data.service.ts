@@ -19,6 +19,10 @@ import {
   TreffenProtokoll,
   ChatKanal,
   ChatNachricht,
+  Faq,
+  Formular,
+  FormularStatus,
+  TagesCheck,
 } from '../models/models';
 
 export abstract class DataService {
@@ -34,6 +38,9 @@ export abstract class DataService {
   abstract readonly reflexionen: Signal<Reflexion[]>;
   abstract readonly chatKanaele: Signal<ChatKanal[]>;
   abstract readonly chatNachrichten: Signal<ChatNachricht[]>;
+  abstract readonly faqs: Signal<Faq[]>;
+  abstract readonly formulare: Signal<Formular[]>;
+  abstract readonly tagesChecks: Signal<TagesCheck[]>;
 
   // --- Aktionen ---
   /** Coach schlägt einen neuen Termin vor (Status 'vorgeschlagen'). */
@@ -83,4 +90,10 @@ export abstract class DataService {
   abstract direktKanalFinden(aId: string, bId: string): ChatKanal | undefined;
   /** Erstellt (oder liefert) einen Direkt-Kanal zwischen zwei Personen. */
   abstract direktKanalErstellen(aId: string, bId: string): ChatKanal;
+  /** Heftet eine Chat-Nachricht an / löst sie wieder ("Sticky"). */
+  abstract chatNachrichtAnpinnen(id: string): void;
+
+  // --- Formulare & tägliches Feedback ---
+  abstract formularStatusSetzen(id: string, status: FormularStatus): void;
+  abstract tagesCheckSpeichern(daten: Omit<TagesCheck, 'id' | 'datum'> & { datum?: string }): TagesCheck;
 }

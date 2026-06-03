@@ -95,6 +95,10 @@ export interface Material {
   kategorie: string;
   /** Für welche Rollen sichtbar */
   fuer: Rolle[];
+  /** Schlagworte für Filter/Suche */
+  tags?: string[];
+  /** Zeitgesteuerte Freischaltung: erst ab diesem ISO-Datum verfügbar. */
+  freigabeAb?: string;
 }
 
 export interface LernSchritt {
@@ -117,6 +121,8 @@ export interface Lernpfad {
   fuer: Rolle;
   symbol: string; // Emoji als leichtgewichtiges Icon
   schritte: LernSchritt[];
+  /** Zeitgesteuerte Freischaltung: erst ab diesem ISO-Datum verfügbar. */
+  freigabeAb?: string;
 }
 
 /** Fortschritt eines Nutzers in einem Lernpfad (Set der erledigten Schritt-IDs). */
@@ -125,7 +131,7 @@ export interface LernpfadFortschritt {
   erledigteSchritte: string[];
 }
 
-export type NachrichtTyp = 'info' | 'absage' | 'erinnerung' | 'lob';
+export type NachrichtTyp = 'info' | 'absage' | 'erinnerung' | 'lob' | 'bedarf';
 
 export interface Nachricht {
   id: string;
@@ -163,6 +169,8 @@ export interface ChatNachricht {
   text: string;
   /** ISO-Zeitstempel */
   zeit: string;
+  /** Wichtige Nachricht angeheftet ("Sticky"). */
+  angepinnt?: boolean;
 }
 
 export interface Reflexion {
@@ -178,4 +186,40 @@ export interface Reflexion {
   gelungen: string;
   /** Was war herausfordernd */
   herausforderung: string;
+}
+
+/** Häufige Frage (durchsuchbar, kategorisiert) für die Selbsthilfe. */
+export interface Faq {
+  id: string;
+  frage: string;
+  antwort: string;
+  kategorie: string;
+  /** Für welche Rollen sichtbar */
+  fuer: Rolle[];
+}
+
+export type FormularStatus = 'offen' | 'erledigt';
+
+/** Zugewiesenes Formular (z. B. JotForm-Link) mit Bearbeitungsstatus. */
+export interface Formular {
+  id: string;
+  titel: string;
+  beschreibung: string;
+  /** Externer Link (im Prototyp Demo). */
+  url: string;
+  fuer: Rolle[];
+  status: FormularStatus;
+  /** optionale Frist (ISO) */
+  faelligAm?: string;
+}
+
+/** Tägliches Kurz-Feedback („Wie lief es?"), Wert 1–3. */
+export interface TagesCheck {
+  id: string;
+  nutzerId: string;
+  schuleId: string;
+  /** ISO-Datum */
+  datum: string;
+  /** 1 = schwierig, 2 = okay, 3 = gut */
+  wert: number;
 }

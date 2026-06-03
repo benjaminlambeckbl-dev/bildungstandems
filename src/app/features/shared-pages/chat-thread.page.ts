@@ -12,13 +12,37 @@ import { DatumPipe } from '../../shared/pipes/datum.pipe';
     @if (kanal(); as k) {
       <bt-page-header [titel]="titel()" [untertitel]="untertitel()" [zurueck]="true" />
 
+      @if (angepinnte().length) {
+        <div class="pins">
+          @for (p of angepinnte(); track p.id) {
+            <div class="pin">
+              <span class="pin-icon">📌</span>
+              <div class="pin-body">
+                <span class="pin-von">{{ chat.nutzerName(p.vonId) }}</span>
+                <span class="pin-text">{{ p.text }}</span>
+              </div>
+              @if (darfPinnen()) {
+                <button class="pin-x" (click)="anpinnen(p.id)" aria-label="Lösen">✕</button>
+              }
+            </div>
+          }
+        </div>
+      }
+
       <div class="verlauf">
         @for (n of nachrichten(); track n.id) {
           <div class="msg" [class.eigen]="chat.istEigene(n.vonId)">
             @if (!chat.istEigene(n.vonId) && gruppe()) {
               <span class="sender">{{ chat.nutzerName(n.vonId) }}</span>
             }
-            <div class="bubble">{{ n.text }}</div>
+            <div class="bubble" [class.gepinnt]="n.angepinnt">
+              {{ n.text }}
+              @if (darfPinnen()) {
+                <button class="pin-btn" (click)="anpinnen(n.id)" [attr.aria-label]="n.angepinnt ? 'Lösen' : 'Anheften'">
+                  {{ n.angepinnt ? '📌' : '📍' }}
+                </button>
+              }
+            </div>
             <span class="zeit">{{ n.zeit | datum: 'zeit' }}</span>
           </div>
         } @empty {
@@ -41,7 +65,19 @@ import { DatumPipe } from '../../shared/pipes/datum.pipe';
   `,
   styles: [
     `
-      :host { display: block; padding-bottom: 70px; }
+      :host { display: block; padding-bottom: 96px; }
+      .pins { display: flex; flex-direction: column; gap: var(--bt-sp-2); margin-bottom: var(--bt-sp-3); }
+      .pin { display: flex; align-items: center; gap: var(--bt-sp-2); background: var(--bt-accent-100);
+        border: 1px solid var(--bt-accent); border-radius: var(--bt-radius); padding: var(--bt-sp-2) var(--bt-sp-3); }
+      .pin-icon { font-size: 1rem; }
+      .pin-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+      .pin-von { font-size: 0.65rem; font-weight: 800; color: var(--bt-accent-600); }
+      .pin-text { font-size: var(--bt-fs-xs); font-weight: 600; }
+      .pin-x { border: none; background: transparent; color: var(--bt-text-muted); font-weight: 800;
+        min-width: 36px; min-height: 36px; }
+      .pin-btn { border: none; background: transparent; font-size: 1rem; margin-left: 6px; opacity: 0.7;
+        min-width: 32px; min-height: 32px; padding: 2px; }
+      .bubble.gepinnt { border-color: var(--bt-accent); }
       .verlauf { display: flex; flex-direction: column; gap: var(--bt-sp-3); padding-bottom: var(--bt-sp-4); }
       .msg { display: flex; flex-direction: column; align-items: flex-start; max-width: 80%; }
       .msg.eigen { align-self: flex-end; align-items: flex-end; }
@@ -90,6 +126,11 @@ export class ChatThreadPage {
 
   readonly kanal = computed(() => this.chat.kanal(this.id())());
   readonly nachrichten = computed(() => this.chat.nachrichtenFuer(this.id())());
+  readonly angepinnte = computed(() => this.chat.angepinnte(this.id())());
+  readonly darfPinnen = computed(() => {
+    const k = this.kanal();
+    return !!k && this.chat.darfPinnen(k);
+  });
   readonly titel = computed(() => {
     const k = this.kanal();
     return k ? this.chat.titel(k) : 'Chat';
@@ -118,5 +159,9 @@ export class ChatThreadPage {
     if (!this.text.trim()) return;
     this.chat.senden(this.id(), this.text);
     this.text = '';
+  }
+
+  anpinnen(nachrichtId: string): void {
+    this.chat.anpinnen(this.id(), nachrichtId);
   }
 }

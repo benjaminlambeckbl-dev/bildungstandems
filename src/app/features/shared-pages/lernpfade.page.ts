@@ -5,28 +5,40 @@ import { DataService } from '../../core/data/data.service';
 import { PageHeaderComponent } from '../../shared/ui/page-header';
 import { ProgressBarComponent } from '../../shared/ui/progress-bar';
 import { EmptyStateComponent } from '../../shared/ui/empty-state';
+import { GesperrtBadgeComponent, istGesperrt } from '../../shared/ui/gesperrt-badge';
 
 @Component({
   selector: 'bt-lernpfade',
   standalone: true,
-  imports: [RouterLink, PageHeaderComponent, ProgressBarComponent, EmptyStateComponent],
+  imports: [RouterLink, PageHeaderComponent, ProgressBarComponent, EmptyStateComponent, GesperrtBadgeComponent],
   template: `
     <bt-page-header titel="Lernpfade" untertitel="Schritt für Schritt sicher werden" />
 
     @if (pfade().length) {
       <div class="bt-stack">
         @for (lp of pfade(); track lp.id) {
-          <a class="pfad" [routerLink]="[basis(), lp.id]">
-            <span class="symbol">{{ lp.symbol }}</span>
-            <div class="mitte">
-              <strong>{{ lp.titel }}</strong>
-              <span class="desc">{{ lp.beschreibung }}</span>
-              <bt-progress [erledigt]="lp.erledigt" [gesamt]="lp.gesamt" />
+          @if (lp.gesperrt) {
+            <div class="pfad gesperrt">
+              <span class="symbol">🔒</span>
+              <div class="mitte">
+                <strong>{{ lp.titel }}</strong>
+                <span class="desc">{{ lp.beschreibung }}</span>
+                <bt-gesperrt-badge [freigabeAb]="lp.freigabeAb!" />
+              </div>
             </div>
-            @if (lp.erledigt === lp.gesamt) {
-              <span class="fertig">✓</span>
-            }
-          </a>
+          } @else {
+            <a class="pfad" [routerLink]="[basis(), lp.id]">
+              <span class="symbol">{{ lp.symbol }}</span>
+              <div class="mitte">
+                <strong>{{ lp.titel }}</strong>
+                <span class="desc">{{ lp.beschreibung }}</span>
+                <bt-progress [erledigt]="lp.erledigt" [gesamt]="lp.gesamt" />
+              </div>
+              @if (lp.erledigt === lp.gesamt) {
+                <span class="fertig">✓</span>
+              }
+            </a>
+          }
         }
       </div>
     } @else {
@@ -46,6 +58,9 @@ import { EmptyStateComponent } from '../../shared/ui/empty-state';
         box-shadow: var(--bt-shadow-sm);
         text-decoration: none;
         color: var(--bt-text);
+      }
+      .pfad.gesperrt {
+        opacity: 0.7;
       }
       .symbol {
         font-size: 2rem;
@@ -96,6 +111,7 @@ export class LernpfadePage {
           ...lp,
           erledigt: f?.erledigteSchritte.length ?? 0,
           gesamt: lp.schritte.length,
+          gesperrt: istGesperrt(lp.freigabeAb),
         };
       });
   });

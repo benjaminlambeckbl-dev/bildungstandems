@@ -34,6 +34,16 @@ import { CardComponent } from '../../shared/ui/card';
         </div>
       </div>
 
+      <!-- Schnellzugriff -->
+      <div class="kpis">
+        <a routerLink="/admin/auswertung" class="kpi link">
+          <span class="zahl">📊</span><span class="label">Auswertung</span>
+        </a>
+        <a routerLink="/admin/faq" class="kpi link">
+          <span class="zahl">💡</span><span class="label">FAQ</span>
+        </a>
+      </div>
+
       <section>
         <h2 class="bt-section-title">Standorte</h2>
         @for (s of standorte(); track s.id) {

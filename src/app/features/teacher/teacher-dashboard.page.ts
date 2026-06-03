@@ -47,7 +47,29 @@ import { TerminItemComponent } from '../../shared/ui/termin-item';
         <a routerLink="/lehrer/chat" class="kachel">
           <span class="k-icon">💬</span><span>Chat</span>
         </a>
+        <a routerLink="/lehrer/auswertung" class="kachel">
+          <span class="k-icon">📊</span><span>Auswertung</span>
+        </a>
+        <a routerLink="/lehrer/formulare" class="kachel">
+          <span class="k-icon">🗂️</span><span>Formulare</span>
+        </a>
+        <a routerLink="/lehrer/faq" class="kachel">
+          <span class="k-icon">💡</span><span>FAQ</span>
+        </a>
       </div>
+
+      <!-- Hilfe-Anfragen der Coaches -->
+      @if (hilfeAnfragen().length) {
+        <section>
+          <h2 class="bt-section-title">🆘 Hilfe-Anfragen</h2>
+          @for (h of hilfeAnfragen(); track h.id) {
+            <bt-card accent accentColor="var(--bt-warning)">
+              <strong>{{ h.titel }}</strong>
+              <p class="klein">{{ h.text }}</p>
+            </bt-card>
+          }
+        </section>
+      }
 
       <!-- Zu bestätigen -->
       @if (vorgeschlagen().length) {
@@ -184,6 +206,15 @@ export class TeacherDashboardPage {
   readonly reflexionen = computed(() => {
     const coachIds = new Set(this.coachs().map((c) => c.id));
     return this.data.reflexionen().filter((r) => coachIds.has(r.nutzerId));
+  });
+
+  /** „Hilfe nötig?"-Bedarfsmeldungen an diese Koordination. */
+  readonly hilfeAnfragen = computed(() => {
+    const id = this.user()?.id;
+    return this.data
+      .nachrichten()
+      .filter((n) => n.typ === 'bedarf' && n.anNutzerId === id)
+      .sort((a, b) => +new Date(b.zeit) - +new Date(a.zeit));
   });
 
   private readonly router = inject(Router);

@@ -117,6 +117,29 @@ export class ChatService {
     this.markGelesen(kanalId);
   }
 
+  /** Wichtige Nachrichten anheften darf nur Lehrkraft/Admin (mit Zugriff auf den Kanal). */
+  darfPinnen(k: ChatKanal): boolean {
+    const u = this.auth.currentUser();
+    if (!u || !this.kannSehen(k)) return false;
+    return u.rolle === 'lehrer' || u.rolle === 'admin';
+  }
+
+  anpinnen(kanalId: string, nachrichtId: string): void {
+    const k = this.data.chatKanaele().find((x) => x.id === kanalId);
+    if (!k || !this.darfPinnen(k)) return;
+    this.data.chatNachrichtAnpinnen(nachrichtId);
+  }
+
+  /** Angeheftete Nachrichten eines Kanals (neueste zuerst). */
+  angepinnte(kanalId: string): Signal<ChatNachricht[]> {
+    return computed(() =>
+      this.data
+        .chatNachrichten()
+        .filter((n) => n.kanalId === kanalId && n.angepinnt)
+        .sort((a, b) => +new Date(b.zeit) - +new Date(a.zeit)),
+    );
+  }
+
   markGelesen(kanalId: string): void {
     const ids = this.data
       .chatNachrichten()

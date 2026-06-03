@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { DataService } from '../../core/data/data.service';
@@ -6,16 +6,24 @@ import { SelectorsService } from '../../core/services/selectors.service';
 import { PageHeaderComponent } from '../../shared/ui/page-header';
 import { TerminItemComponent } from '../../shared/ui/termin-item';
 import { EmptyStateComponent } from '../../shared/ui/empty-state';
+import { MonatsKalenderComponent } from '../../shared/ui/monats-kalender';
 import { Termin } from '../../core/models/models';
 
 @Component({
   selector: 'bt-teacher-termine',
   standalone: true,
-  imports: [PageHeaderComponent, TerminItemComponent, EmptyStateComponent],
+  imports: [PageHeaderComponent, TerminItemComponent, EmptyStateComponent, MonatsKalenderComponent],
   template: `
     <bt-page-header titel="Termine" untertitel="Alle Treffen deiner Tandems" />
 
-    @if (termine().length) {
+    <div class="ansicht-tabs">
+      <button [class.an]="ansicht() === 'liste'" (click)="ansicht.set('liste')">Liste</button>
+      <button [class.an]="ansicht() === 'kalender'" (click)="ansicht.set('kalender')">Kalender</button>
+    </div>
+
+    @if (ansicht() === 'kalender') {
+      <bt-monats-kalender [termine]="termine()" (oeffnen)="oeffne($event)" />
+    } @else if (termine().length) {
       <div class="bt-stack">
         @for (t of termine(); track t.id) {
           <div>
@@ -39,6 +47,10 @@ import { Termin } from '../../core/models/models';
   `,
   styles: [
     `
+      .ansicht-tabs { display: flex; gap: var(--bt-sp-2); margin-bottom: var(--bt-sp-3); }
+      .ansicht-tabs button { flex: 1; border: 1.5px solid var(--bt-border); background: var(--bt-surface);
+        color: var(--bt-text-muted); border-radius: var(--bt-radius-pill); padding: 0.45rem; font-weight: 800; }
+      .ansicht-tabs button.an { background: var(--bt-primary); color: #fff; border-color: var(--bt-primary); }
       .aktionen {
         display: flex;
         gap: var(--bt-sp-2);
@@ -57,6 +69,7 @@ export class TeacherTerminePage {
   private readonly sel = inject(SelectorsService);
   private readonly router = inject(Router);
 
+  readonly ansicht = signal<'liste' | 'kalender'>('liste');
   readonly termine = this.sel.termineMeinerSchule;
 
   oeffne(id: string): void {

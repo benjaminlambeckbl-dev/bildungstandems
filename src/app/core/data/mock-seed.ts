@@ -16,6 +16,8 @@ import {
   ProgrammPhase,
   ChatKanal,
   ChatNachricht,
+  Formular,
+  TagesCheck,
 } from '../models/models';
 
 // Hilfsfunktion: ISO-String für "in X Tagen, HH:MM"
@@ -94,14 +96,16 @@ export const TERMINE: Termin[] = [
 ];
 
 export const MATERIALIEN: Material[] = [
-  { id: 'm1', titel: 'Leitfaden: Mein erstes Tandem-Treffen', beschreibung: 'Schritt-für-Schritt-Anleitung für den Start.', typ: 'pdf', kategorie: 'Grundlagen', fuer: ['coach'] },
-  { id: 'm2', titel: '20 Kennenlernspiele', beschreibung: 'Spielesammlung für die ersten Treffen.', typ: 'spiel', kategorie: 'Spiele & Methoden', fuer: ['coach', 'lehrer'] },
-  { id: 'm3', titel: 'Video: Gute Moderation', beschreibung: 'Kurzes Erklärvideo (4 Min) zur Gesprächsleitung.', typ: 'video', kategorie: 'Moderation', fuer: ['coach'] },
-  { id: 'm4', titel: 'Vorlage: Reflexionsbogen', beschreibung: 'Zum Ausdrucken nach jedem Treffen.', typ: 'vorlage', kategorie: 'Reflexion', fuer: ['coach', 'lehrer'] },
-  { id: 'm5', titel: 'Umgang mit Streit', beschreibung: 'Tipps zur Konfliktlösung in der Gruppe.', typ: 'pdf', kategorie: 'Konflikte', fuer: ['coach'] },
-  { id: 'm6', titel: 'Koordinations-Handbuch', beschreibung: 'Organisation der Tandems an der Schule.', typ: 'pdf', kategorie: 'Organisation', fuer: ['lehrer'] },
-  { id: 'm7', titel: 'Elternbrief-Vorlage', beschreibung: 'Information für Eltern der Grundschulkinder.', typ: 'vorlage', kategorie: 'Organisation', fuer: ['lehrer'] },
-  { id: 'm8', titel: 'Programm-Übersicht Schuljahr', beschreibung: 'Der Ablauf von Auftakt bis Abschlussfeier.', typ: 'link', kategorie: 'Grundlagen', fuer: ['coach', 'lehrer'] },
+  { id: 'm1', titel: 'Leitfaden: Mein erstes Tandem-Treffen', beschreibung: 'Schritt-für-Schritt-Anleitung für den Start.', typ: 'pdf', kategorie: 'Grundlagen', fuer: ['coach'], tags: ['Einstieg', 'Ablauf'] },
+  { id: 'm2', titel: '20 Kennenlernspiele', beschreibung: 'Spielesammlung für die ersten Treffen.', typ: 'spiel', kategorie: 'Spiele & Methoden', fuer: ['coach', 'lehrer'], tags: ['Spiele', 'Einstieg'] },
+  { id: 'm3', titel: 'Video: Gute Moderation', beschreibung: 'Kurzes Erklärvideo (4 Min) zur Gesprächsleitung.', typ: 'video', kategorie: 'Moderation', fuer: ['coach'], tags: ['Moderation', 'Video'] },
+  { id: 'm4', titel: 'Vorlage: Reflexionsbogen', beschreibung: 'Zum Ausdrucken nach jedem Treffen.', typ: 'vorlage', kategorie: 'Reflexion', fuer: ['coach', 'lehrer'], tags: ['Reflexion', 'Vorlage'] },
+  { id: 'm5', titel: 'Umgang mit Streit', beschreibung: 'Tipps zur Konfliktlösung in der Gruppe.', typ: 'pdf', kategorie: 'Konflikte', fuer: ['coach'], tags: ['Konflikte'] },
+  { id: 'm6', titel: 'Koordinations-Handbuch', beschreibung: 'Organisation der Tandems an der Schule.', typ: 'pdf', kategorie: 'Organisation', fuer: ['lehrer'], tags: ['Organisation'] },
+  { id: 'm7', titel: 'Elternbrief-Vorlage', beschreibung: 'Information für Eltern der Grundschulkinder.', typ: 'vorlage', kategorie: 'Organisation', fuer: ['lehrer'], tags: ['Organisation', 'Vorlage'] },
+  { id: 'm8', titel: 'Programm-Übersicht Schuljahr', beschreibung: 'Der Ablauf von Auftakt bis Abschlussfeier.', typ: 'link', kategorie: 'Grundlagen', fuer: ['coach', 'lehrer'], tags: ['Ablauf'] },
+  // Zeitgesteuerte Freischaltung: erst zur Abschlussphase verfügbar.
+  { id: 'm9', titel: 'Abschlussfeier organisieren', beschreibung: 'Checkliste & Ideen für die Abschlussfeier.', typ: 'pdf', kategorie: 'Organisation', fuer: ['coach', 'lehrer'], tags: ['Abschluss'], freigabeAb: '2026-06-22T00:00:00Z' },
 ];
 
 export const LERNPFADE: Lernpfad[] = [
@@ -118,6 +122,7 @@ export const LERNPFADE: Lernpfad[] = [
   },
   {
     id: 'lp2', titel: 'Umgang mit Konflikten', fuer: 'coach', symbol: '🕊️',
+    freigabeAb: '2026-06-15T00:00:00Z',
     beschreibung: 'Was tun, wenn es Streit gibt? Drei einfache Schritte.',
     schritte: [
       { id: 'lp2s1', titel: 'Ruhe bewahren', inhalt: 'Bleib ruhig und gehe dazwischen, ohne Partei zu ergreifen. Deine Ruhe überträgt sich auf die Kinder.' },
@@ -143,6 +148,8 @@ export const NACHRICHTEN: Nachricht[] = [
   { id: 'n3', typ: 'lob', titel: 'Stark gemacht!', text: 'Die Kinder haben mir erzählt, wie viel Spaß sie beim letzten Treffen hatten. Weiter so, Lea!', zeit: inTagen(-3, 16, 30), vonName: 'Frau Vogel', anNutzerId: 'c1', gelesen: true },
   { id: 'n4', typ: 'erinnerung', titel: 'Morgen Tandem-Treffen', text: 'Denk dran: morgen um 14:00 Uhr Kennenlernspiele in Raum 102.', zeit: inTagen(0, 8, 0), vonName: 'BildungsTandems', anNutzerId: 'c1', gelesen: false, terminId: 'tm1' },
   { id: 'n5', typ: 'info', titel: 'Auftakt-Training', text: 'Das Auftakt-Training findet nächste Woche statt. Bitte teilnehmen!', zeit: inTagen(-1, 10, 0), vonName: 'Herr Özdemir', anNutzerId: 'c4', gelesen: false, terminId: 'tm6' },
+  // Bedarfsmeldung eines Coachs an die Koordination („Hilfe nötig?")
+  { id: 'n6', typ: 'bedarf', titel: 'Hilfe nötig: Tandem Delfin', text: 'Jonas (Tandem Delfin) bittet um Unterstützung bei einem Treffen.', zeit: inTagen(-1, 13, 20), vonName: 'Jonas Keller', anNutzerId: 'l1', gelesen: false },
 ];
 
 export const REFLEXIONEN: Reflexion[] = [
@@ -177,7 +184,23 @@ export const CHAT_NACHRICHTEN: ChatNachricht[] = [
   { id: 'cm2', kanalId: 'k-koh-s1', vonId: 'c1', text: 'Ja! „Namen-Ball" klappt super zum Aufwärmen 🙂', zeit: inTagen(-1, 16, 25) },
   { id: 'cm3', kanalId: 'k-koh-s1', vonId: 'c3', text: 'Danke, probiere ich aus!', zeit: inTagen(-1, 16, 40) },
   { id: 'cm4', kanalId: 'k-koll', vonId: 'l2', text: 'Wie organisiert ihr die Raumbuchung an eurer Schule?', zeit: inTagen(-2, 11, 0) },
-  { id: 'cm5', kanalId: 'k-koll', vonId: 'l1', text: 'Wir blocken feste Slots im Vertretungsplan – läuft gut.', zeit: inTagen(-2, 11, 20) },
+  { id: 'cm5', kanalId: 'k-koll', vonId: 'l1', text: 'Wichtig: Nächster gemeinsamer Reflexionstermin am 15.06. um 15:00 Uhr.', zeit: inTagen(-2, 11, 20), angepinnt: true },
   { id: 'cm6', kanalId: 'k-dir-l1c1', vonId: 'l1', text: 'Hallo Lea, klappt der Termin am Montag bei dir?', zeit: inTagen(-1, 9, 30) },
   { id: 'cm7', kanalId: 'k-dir-l1c1', vonId: 'c1', text: 'Ja, passt! Ich bereite die Spiele vor. 👍', zeit: inTagen(-1, 9, 45) },
+];
+
+// Zugewiesene Formulare (Demo – im Echtbetrieb z. B. JotForm-Links).
+export const FORMULARE: Formular[] = [
+  { id: 'f1', titel: 'Einverständnis Fotonutzung', beschreibung: 'Zustimmung zur Nutzung von Fotos der Abschlussfeier.', url: 'https://example.com/form/foto', fuer: ['coach'], status: 'offen', faelligAm: inTagen(7, 0, 0) },
+  { id: 'f2', titel: 'Zwischen-Feedback Halbjahr', beschreibung: 'Kurzer Fragebogen zur Halbzeit des Programms.', url: 'https://example.com/form/halbzeit', fuer: ['coach', 'lehrer'], status: 'erledigt' },
+  { id: 'f3', titel: 'Schul-Stammdaten aktualisieren', beschreibung: 'Bitte Kontaktdaten der Schule prüfen.', url: 'https://example.com/form/stammdaten', fuer: ['lehrer'], status: 'offen' },
+];
+
+// Tägliches Kurz-Feedback (Wert 1=schwierig, 2=okay, 3=gut).
+export const TAGES_CHECKS: TagesCheck[] = [
+  { id: 'tc1', nutzerId: 'c1', schuleId: 's1', datum: inTagen(-2, 17, 0), wert: 3 },
+  { id: 'tc2', nutzerId: 'c2', schuleId: 's1', datum: inTagen(-2, 17, 0), wert: 2 },
+  { id: 'tc3', nutzerId: 'c3', schuleId: 's1', datum: inTagen(-1, 17, 0), wert: 3 },
+  { id: 'tc4', nutzerId: 'c1', schuleId: 's1', datum: inTagen(-1, 17, 0), wert: 2 },
+  { id: 'tc5', nutzerId: 'c4', schuleId: 's2', datum: inTagen(-1, 17, 0), wert: 1 },
 ];

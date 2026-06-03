@@ -11,6 +11,7 @@ const ICON: Record<NachrichtTyp, string> = {
   absage: '⚠️',
   erinnerung: '🔔',
   lob: '🌟',
+  bedarf: '🆘',
 };
 
 @Component({

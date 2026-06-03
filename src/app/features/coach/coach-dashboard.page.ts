@@ -8,6 +8,8 @@ import { CardComponent } from '../../shared/ui/card';
 import { TerminItemComponent } from '../../shared/ui/termin-item';
 import { ProgressBarComponent } from '../../shared/ui/progress-bar';
 import { EmptyStateComponent } from '../../shared/ui/empty-state';
+import { TagesCheckComponent } from '../../shared/ui/tages-check';
+import { HilfeButtonComponent } from '../../shared/ui/hilfe-button';
 
 @Component({
   selector: 'bt-coach-dashboard',
@@ -18,6 +20,8 @@ import { EmptyStateComponent } from '../../shared/ui/empty-state';
     TerminItemComponent,
     ProgressBarComponent,
     EmptyStateComponent,
+    TagesCheckComponent,
+    HilfeButtonComponent,
   ],
   template: `
     <div class="bt-stack">
@@ -30,6 +34,9 @@ import { EmptyStateComponent } from '../../shared/ui/empty-state';
           </p>
         }
       </header>
+
+      <!-- Tägliches Kurz-Feedback -->
+      <bt-tages-check />
 
       <!-- Nächster Termin -->
       <section>
@@ -73,7 +80,18 @@ import { EmptyStateComponent } from '../../shared/ui/empty-state';
           <span class="k-icon">💬</span>
           <span class="k-label">Chat (Kohorte)</span>
         </a>
+        <a routerLink="/coach/faq" class="kachel">
+          <span class="k-icon">💡</span>
+          <span class="k-label">FAQ & Hilfe</span>
+        </a>
+        <a routerLink="/coach/formulare" class="kachel">
+          <span class="k-icon">🗂️</span>
+          <span class="k-label">Formulare</span>
+        </a>
       </section>
+
+      <!-- Schnelle Hilfe anfordern -->
+      <bt-hilfe-button />
 
       <!-- Lernfortschritt -->
       <section>

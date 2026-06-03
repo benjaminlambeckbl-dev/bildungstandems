@@ -30,6 +30,8 @@ export const routes: Routes = [
       { path: 'reflexion', loadComponent: () => import('./features/coach/coach-reflexion.page').then((m) => m.CoachReflexionPage) },
       { path: 'chat', loadComponent: () => import('./features/shared-pages/chat-liste.page').then((m) => m.ChatListePage) },
       { path: 'chat/:id', loadComponent: () => import('./features/shared-pages/chat-thread.page').then((m) => m.ChatThreadPage) },
+      { path: 'faq', loadComponent: () => import('./features/shared-pages/faq.page').then((m) => m.FaqPage) },
+      { path: 'formulare', loadComponent: () => import('./features/shared-pages/formulare.page').then((m) => m.FormularePage) },
     ],
   },
 
@@ -54,6 +56,9 @@ export const routes: Routes = [
       { path: 'chat', loadComponent: () => import('./features/shared-pages/chat-liste.page').then((m) => m.ChatListePage) },
       { path: 'chat/neu', loadComponent: () => import('./features/shared-pages/chat-neu.page').then((m) => m.ChatNeuPage) },
       { path: 'chat/:id', loadComponent: () => import('./features/shared-pages/chat-thread.page').then((m) => m.ChatThreadPage) },
+      { path: 'faq', loadComponent: () => import('./features/shared-pages/faq.page').then((m) => m.FaqPage) },
+      { path: 'formulare', loadComponent: () => import('./features/shared-pages/formulare.page').then((m) => m.FormularePage) },
+      { path: 'auswertung', loadComponent: () => import('./features/shared-pages/auswertung.page').then((m) => m.AuswertungPage) },
     ],
   },
 
@@ -67,11 +72,14 @@ export const routes: Routes = [
       { path: '', loadComponent: () => import('./features/admin/admin-dashboard.page').then((m) => m.AdminDashboardPage) },
       { path: 'schulen', loadComponent: () => import('./features/admin/admin-schulen.page').then((m) => m.AdminSchulenPage) },
       { path: 'termine', loadComponent: () => import('./features/admin/admin-termine.page').then((m) => m.AdminTerminePage) },
+      { path: 'termine/:id', loadComponent: () => import('./features/shared-pages/termin-detail.page').then((m) => m.TerminDetailPage) },
       { path: 'tandems', loadComponent: () => import('./features/admin/admin-tandems.page').then((m) => m.AdminTandemsPage) },
       { path: 'programm', loadComponent: () => import('./features/shared-pages/programm.page').then((m) => m.ProgrammPage) },
       { path: 'chat', loadComponent: () => import('./features/shared-pages/chat-liste.page').then((m) => m.ChatListePage) },
       { path: 'chat/neu', loadComponent: () => import('./features/shared-pages/chat-neu.page').then((m) => m.ChatNeuPage) },
       { path: 'chat/:id', loadComponent: () => import('./features/shared-pages/chat-thread.page').then((m) => m.ChatThreadPage) },
+      { path: 'faq', loadComponent: () => import('./features/shared-pages/faq.page').then((m) => m.FaqPage) },
+      { path: 'auswertung', loadComponent: () => import('./features/shared-pages/auswertung.page').then((m) => m.AuswertungPage) },
     ],
   },
 

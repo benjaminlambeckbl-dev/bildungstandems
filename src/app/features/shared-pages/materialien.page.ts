@@ -4,6 +4,7 @@ import { AuthService } from '../../core/auth/auth.service';
 import { DataService } from '../../core/data/data.service';
 import { PageHeaderComponent } from '../../shared/ui/page-header';
 import { EmptyStateComponent } from '../../shared/ui/empty-state';
+import { GesperrtBadgeComponent, istGesperrt } from '../../shared/ui/gesperrt-badge';
 import { Material, MaterialTyp } from '../../core/models/models';
 
 const TYP_ICON: Record<MaterialTyp, string> = {
@@ -24,7 +25,7 @@ const TYP_LABEL: Record<MaterialTyp, string> = {
 @Component({
   selector: 'bt-materialien',
   standalone: true,
-  imports: [FormsModule, PageHeaderComponent, EmptyStateComponent],
+  imports: [FormsModule, PageHeaderComponent, EmptyStateComponent, GesperrtBadgeComponent],
   template: `
     <bt-page-header titel="Materialien" untertitel="Alles für deine Tandem-Arbeit" />
 
@@ -57,14 +58,22 @@ const TYP_LABEL: Record<MaterialTyp, string> = {
             <h2 class="bt-section-title">{{ g.kategorie }}</h2>
             <div class="liste">
               @for (m of g.eintraege; track m.id) {
-                <button class="mat" type="button" (click)="oeffnen(m)">
-                  <span class="m-icon">{{ icon(m.typ) }}</span>
+                <button class="mat" type="button" [class.gesperrt]="gesperrt(m)" (click)="oeffnen(m)">
+                  <span class="m-icon">{{ gesperrt(m) ? '🔒' : icon(m.typ) }}</span>
                   <span class="m-body">
                     <strong>{{ m.titel }}</strong>
                     <span class="m-desc">{{ m.beschreibung }}</span>
-                    <span class="m-typ">{{ label(m.typ) }}</span>
+                    <span class="m-meta">
+                      <span class="m-typ">{{ label(m.typ) }}</span>
+                      @for (t of m.tags ?? []; track t) {
+                        <span class="m-tag" (click)="tagFilter(t, $event)">#{{ t }}</span>
+                      }
+                    </span>
+                    @if (gesperrt(m)) {
+                      <bt-gesperrt-badge [freigabeAb]="m.freigabeAb!" />
+                    }
                   </span>
-                  <span class="m-pfeil">↓</span>
+                  @if (!gesperrt(m)) { <span class="m-pfeil">↓</span> }
                 </button>
               }
             </div>
@@ -165,15 +174,32 @@ const TYP_LABEL: Record<MaterialTyp, string> = {
         font-size: var(--bt-fs-xs);
         color: var(--bt-text-muted);
       }
-      .m-typ {
-        align-self: flex-start;
+      .m-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        align-items: center;
         margin-top: 4px;
+      }
+      .m-typ {
         font-size: 0.65rem;
         font-weight: 800;
         color: var(--bt-primary);
         background: var(--bt-primary-100);
         padding: 1px 7px;
         border-radius: var(--bt-radius-pill);
+      }
+      .m-tag {
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--bt-text-muted);
+        background: var(--bt-surface-alt);
+        padding: 1px 7px;
+        border-radius: var(--bt-radius-pill);
+      }
+      .mat.gesperrt {
+        opacity: 0.7;
+        cursor: default;
       }
       .m-pfeil {
         color: var(--bt-text-soft);
@@ -209,7 +235,8 @@ export class MaterialienPage {
   /** Für die aktuelle Rolle sichtbare Materialien. */
   private readonly sichtbar = computed(() => {
     const rolle = this.auth.rolle();
-    return this.data.materialien().filter((m) => !rolle || m.fuer.includes(rolle));
+    if (!rolle) return [];
+    return this.data.materialien().filter((m) => m.fuer.includes(rolle));
   });
 
   readonly kategorien = computed(() => [...new Set(this.sichtbar().map((m) => m.kategorie))]);
@@ -223,7 +250,8 @@ export class MaterialienPage {
       const passtSuche =
         !q ||
         m.titel.toLowerCase().includes(q) ||
-        m.beschreibung.toLowerCase().includes(q);
+        m.beschreibung.toLowerCase().includes(q) ||
+        (m.tags ?? []).some((t) => t.toLowerCase().includes(q));
       return passtKat && passtSuche;
     });
     const kategorien = [...new Set(gefiltert.map((m) => m.kategorie))];
@@ -239,7 +267,15 @@ export class MaterialienPage {
   label(typ: MaterialTyp): string {
     return TYP_LABEL[typ];
   }
+  gesperrt(m: Material): boolean {
+    return istGesperrt(m.freigabeAb);
+  }
+  tagFilter(tag: string, ev: Event): void {
+    ev.stopPropagation();
+    this.suche.set(tag);
+  }
   oeffnen(m: Material): void {
+    if (this.gesperrt(m)) return; // zeitgesteuert noch nicht verfügbar
     this.hinweis.set(m.titel);
     // „zuletzt geöffnet": vorne einfügen, Duplikate entfernen, max. 4.
     this.zuletzt.update((list) => [m, ...list.filter((x) => x.id !== m.id)].slice(0, 4));
