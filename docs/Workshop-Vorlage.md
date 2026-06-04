@@ -72,4 +72,6 @@ Feedback, zeitgesteuerte Freischaltung, Sticky-Chat, Tags, Formulare.
 ## 5. Ergebnis & nächster Schritt
 
 Aus den Antworten leiten wir den **MVP-Umfang** ab und erstellen das **Angebot**
-(siehe `Angebot-Arbeitspakete.md` als Grundlage).
+(siehe `Angebot-Arbeitspakete.md`). Vorbereitet ist bereits ein **pilotfähiger erster
+Schritt im Rahmen des verfügbaren Budgets** (Version 1) plus Roadmap und optionalem
+Wartungs-/Supportpaket fürs erste Schuljahr.

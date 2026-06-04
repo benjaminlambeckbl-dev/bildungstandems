@@ -31,7 +31,9 @@ Sag gern kurz Bescheid, was für euch passt – dann schicke ich eine Einladung.
 
 Auf Basis des Workshops bereiten wir euch anschließend ein **Angebot** vor, damit ihr
 final entscheiden könnt. Eine erste Struktur dafür haben wir schon vorbereitet und
-bringen sie mit.
+bringen sie mit – inklusive eines **pilotfähigen ersten Schritts, der gut zu eurem
+Rahmen passt**, plus einer Roadmap für spätere Ausbaustufen und einem optionalen
+Wartungs-/Supportpaket fürs erste Schuljahr.
 
 Herzliche Grüße
 [Benjamin]

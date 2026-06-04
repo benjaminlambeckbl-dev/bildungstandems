@@ -1,86 +1,112 @@
-# Angebots-Grundlage – BildungsTandems / ZSB-Plattform
+# Angebot (Grundlage) – BildungsTandems / ZSB-Plattform
 
-> Arbeitsdokument zur Vorbereitung des Angebots **nach dem Workshop**. Die
-> Aufwände sind grobe Orientierung (T-Shirt-Größen). **Tagessatz/Preise** trägst du
-> ein. Finaler Umfang hängt von den Workshop-Entscheidungen ab (siehe offene Punkte).
-
-**Aufwands-Größen:** S ≈ 1–2 PT · M ≈ 3–6 PT · L ≈ 7–15 PT · XL ≈ >15 PT (PT = Personentage)
+> Arbeitsdokument. **Tagessatz angenommen: 800 €/PT** (anpassbar). Preise = Orientierung,
+> finaler Umfang nach Workshop. Budget Kunde: **20.000 €** → daraus ein klar
+> abgegrenzter, **pilotfähiger** erster Schritt (Version 1) + Roadmap.
 
 ---
 
-## Phase 0 – Bereits erbracht (Prototyp, im Festpreis/anteilig)
+## Version 1 – „Pilot" (Festpreis 20.000 €)
 
-Klickbarer, installierbarer PWA-Prototyp (Angular 21) mit drei Rollen, kompletter
-UI für Termine, Material, Lernpfade, FAQ, Chat, Feedback/Auswertung, Programm-Jahr,
-Zertifikat, Formulare – mit **Mock-Daten** und **Supabase-ready** gekapselter
-Datenschicht. Live + öffentlich deploybar.
-→ *Dient als gemeinsame Diskussions- und Abnahmegrundlage.*
+Fokus: **Schüler:innen/Coaches + Koordination**, Kernflüsse **Termine, Material,
+Lernpfade, Feedback** – der bestehende Prototyp wird „echt" gemacht (Backend, Login,
+DSGVO-Basis), pilotierbar an 1–2 Schulen. Günstig, weil Oberfläche + Datenschicht stehen.
+
+| Arbeitspaket | PT |
+|---|---|
+| Supabase EU aufsetzen + Datenmodell/Migration | 5 |
+| Datenschicht real anbinden (UI bleibt 1:1) | 4 |
+| Login + sicherer Einladungs-/Onboarding-Flow (Coach + Koordination) | 4 |
+| Rollen-/Schulrechte serverseitig (RLS) | 3 |
+| Erinnerungen **live** – eine Variante (Web-Push **oder** E-Mail) | 3 |
+| DSGVO-Basics (EU, Einwilligungen, Datensparsamkeit, Lösch-Konzept) | 2 |
+| Deployment/Betrieb + Abnahme + Übergabe/Doku | 3 |
+| Projektleitung / Puffer | 1 |
+| **Summe** | **25 PT → 20.000 €** |
+
+*Der bereits erstellte **Prototyp** (≈ 8–15 PT) wird als Vorleistung eingebracht.*
+
+---
+
+## Funktionsübersicht – was ist wann enthalten?
+
+Legende: ✅ enthalten · ◐ Basis enthalten, Ausbau später · ⏳ Folgebudget · — nicht
+
+| Funktion | Prototyp (heute) | **V1 – Pilot (20k)** | Ausbau |
+|---|:---:|:---:|:---:|
+| **Login & Rollen** (Coach / Koordination / Admin) | Demo/Code | ✅ echtes Login + Einladung | |
+| Trainer-Rolle (ZSB) | — | — | ⏳ |
+| **Termine** sehen/vorschlagen/bestätigen | ✅ Mock | ✅ live | |
+| Termin-Detail (Teilnahme, Checkliste, Doku) | ✅ | ✅ live | |
+| **Kalenderansicht** | ✅ | ✅ | |
+| **Erinnerungen** | Demo | ◐ 1 Variante (Push *oder* Mail) | ⏳ 2. Variante |
+| **Materialien** (Suche, Filter, Tags, zuletzt) | ✅ | ✅ live | |
+| Material-Upload / Datei-Storage | — | ◐ durch uns gepflegt | ⏳ Self-Service-Upload |
+| **CMS-Pflegeoberfläche** (Inhalte selbst pflegen) | — | — | ⏳ |
+| **Zeitgesteuerte Freischaltung** | ✅ | ✅ | |
+| **Lernpfade** (Stepper, Quiz, Vorlesen) | ✅ | ✅ live (Fortschritt) | |
+| **FAQ** (durchsuchbar) | ✅ | ✅ (Redaktion: ZSB) | |
+| **Reflexion** nach Treffen | ✅ | ✅ | |
+| **Tägliches Kurz-Feedback** | ✅ | ✅ | |
+| **„Hilfe nötig?"**-Bedarfsmeldung | ✅ | ✅ | |
+| **Auswertung / Diagramme** | ✅ | ◐ Basis | ⏳ Trends, Export |
+| **Info-Kanal** Lehrkraft → Coach | ✅ | ✅ live | |
+| **Gruppen-/Direkt-Chat** (Kohorte, Kollegium) | ✅ Mock | — | ⏳ inkl. Moderation |
+| Chat-Moderation / Meldefunktion | — | — | ⏳ (Kinderschutz) |
+| Wichtige Nachrichten anheften (Sticky) | ✅ | — | ⏳ (mit Chat) |
+| **Programm-Zeitstrahl** | ✅ | ✅ | |
+| **Coach-Zertifikat** (PDF) | ✅ | ✅ | |
+| **Formulare** (Status) | ✅ Mock | — | ⏳ JotForm-Integration |
+| **Verwaltung**: Schulen anlegen, Trainer zuweisen | — | — | ⏳ |
+| Jahreswechsel-Logik | — | — | ⏳ |
+| **Echtes Web-Push** (beide Plattformen) | Demo | ◐ | ⏳ |
+| **DSGVO**: EU-Hosting, Datensparsamkeit, Einwilligungen | konzipiert | ✅ Basis | ⏳ AVV, Self-Service Auskunft/Löschung |
+| **Evaluations-Export** (TU Dortmund) | — | — | ⏳ |
+| **PWA** installierbar + Offline-Lesen | ✅ | ✅ | |
 
 ---
 
-## Phase 1 – Tragfähiges Fundament (Voraussetzung für Echtbetrieb)
+## Wartung & Support (Jahr 1) – jährlich
 
-| AP | Leistung | Aufwand |
-|---|---|---|
-| 1.1 | **Supabase EU** aufsetzen (Postgres, Datenmodell-Migration aus den bestehenden Modellen) | M |
-| 1.2 | **Auth & Login** (Supabase Auth) + sicherer **Einladungs-/Onboarding-Flow** statt Demo-Code | M |
-| 1.3 | **Row-Level-Security & Rollenrechte** serverseitig spiegeln (inkl. Chat-/Auswertungs-Sichtbarkeit) | M–L |
-| 1.4 | DataService-Implementierung gegen Supabase (UI bleibt unverändert) | M |
-| 1.5 | Hosting/Deployment-Pipeline, Umgebungen (Test/Prod), Monitoring | S–M |
+Empfohlen, da der Pilot über ein Schuljahr läuft. Enthält Betrieb (Monitoring),
+Sicherheits-/Abhängigkeits-Updates und Fehlerbehebung.
 
-## Phase 2 – Benachrichtigungen & Kommunikation live
+| Paket | Leistung | Umfang/Monat | Preis/Monat | Jahr 1 |
+|---|---|:---:|:---:|:---:|
+| **Basis** | Betrieb, Security-/Dependency-Updates, kritische Bugfixes, E-Mail-Support | ~0,5 PT | 400 € | **4.800 €** |
+| **Standard** *(empfohlen)* | Basis + kleine Anpassungen + Inhalts-Support + schnellere Reaktion | ~1 PT | 800 € | **9.600 €** |
+| **Pilot-Begleitung** | Standard + Weiterentwicklungs-Kontingent (iterative Verbesserungen im Schuljahr) | ~2 PT | 1.500 € | **18.000 €** |
 
-| AP | Leistung | Aufwand |
-|---|---|---|
-| 2.1 | **Echtes Web-Push** (VAPID + Supabase Edge Function, Service Worker) | M |
-| 2.2 | **E-Mail-Benachrichtigungen** (Erinnerungen, Einladungen) | S–M |
-| 2.3 | **Chat live** (Supabase Realtime) statt Mock | M |
-| 2.4 | **Chat-Moderation/Meldefunktion + Wortfilter** (Kinderschutz) | M |
-
-## Phase 3 – Inhalte & Schuljahres-Logik (CMS)
-
-| AP | Leistung | Aufwand |
-|---|---|---|
-| 3.1 | **Material-/Inhalts-Pflege (CMS)** für ZSB: anlegen, kategorisieren, taggen | M–L |
-| 3.2 | **Zeitgesteuerte Freischaltung** serverseitig + Phasen-Logik | S–M |
-| 3.3 | **FAQ-Pflege** (Redaktion) | S |
-| 3.4 | Datei-Upload/Storage (PDF, Bilder) inkl. Rechte | M |
-
-## Phase 4 – Verwaltung & Organisation
-
-| AP | Leistung | Aufwand |
-|---|---|---|
-| 4.1 | **Trainer-Rolle (ZSB)** inkl. Rechte/Ansichten *(falls im Workshop bestätigt)* | M |
-| 4.2 | **Schulen anlegen, Trainer zuweisen** (Admin) | M |
-| 4.3 | **Jahreswechsel-Logik** der Nutzer (Archiv/Übergang) | M–L |
-| 4.4 | **Formulare**: echte Integration (z. B. JotForm) + Zuweisung + Status | S–M |
-| 4.5 | **Feedback-Auswertung** ausbauen (Trends, Export) | M |
-
-## Phase 5 – Datenschutz, Qualität, Betrieb
-
-| AP | Leistung | Aufwand |
-|---|---|---|
-| 5.1 | **DSGVO-Paket**: AVV, Einwilligungen (Eltern/Minderjährige), Lösch-/Auskunfts-/Exportkonzept | M |
-| 5.2 | **Evaluations-Export** (anonymisiert, TU Dortmund) | S–M |
-| 5.3 | **Barrierefreiheit** & Performance (>1000 Nutzer:innen), Lasttest | M |
-| 5.4 | **Tests** (Unit/E2E) + Abnahme + Doku/Schulung | M–L |
+*Optional einmalig:* **Einführung/Schulung** der Koordinator:innen (½–1 Tag) ~400–800 €.
 
 ---
+
+## Roadmap Ausbau (späteres Budget, z. B. RAG-Stiftung)
+
+| Stufe | Inhalt | Aufwand | Orientierung |
+|---|---|---|---|
+| **B – MVP+** | Live-Gruppenchat + Moderation, CMS-Light, Auswertung-Ausbau, 2. Benachrichtigung | ~30–45 PT | ~24.000–36.000 € |
+| **C – Vollausbau** | Trainer-Rolle, Verwaltung/Jahreswechsel, Formular-Integration, Storage/Upload, Evaluations-Export, Barrierefreiheit/Last, Tests | ~40–55 PT | ~32.000–44.000 € |
+
+---
+
+## Betriebskosten (laufend, beim Kunden)
+- **Supabase EU**: Pilot meist kostenlos (Free-Tier), bei Bedarf ~25 €/Monat.
+- **Mailversand**: gering (~0–20 €/Monat).
+- **Domain/Hosting** der PWA: gering bzw. über bestehende Infrastruktur.
 
 ## Annahmen
-- MVP-Umfang wird im Workshop festgelegt; nicht alle Phasen müssen sofort beauftragt werden.
-- Inhalte (Texte, Materialien, FAQ) werden von der ZSB redaktionell geliefert.
-- Designsystem orientiert sich an der ZSB-CI (bereits angelegt).
+- Inhalte (Materialien, FAQ-Texte, Lernpfade) liefert die ZSB redaktionell.
+- Pilot an 1–2 Schulen; Datensparsamkeit (Coachees nur Vornamen) bleibt erhalten.
+- Eltern-Einwilligungen werden organisatorisch durch die ZSB eingeholt.
 
-## Nicht enthalten (sofern nicht beauftragt)
-- Native App-Store-Apps (PWA deckt Installation + Push ab).
-- Inhaltliche Erstellung von Lernmaterialien/Trainings.
-- Drittlizenzen (z. B. JotForm, Mail-Versand) – Betriebskosten beim Kunden.
+## Nicht im Pilot enthalten (siehe Roadmap)
+Gruppen-/Direkt-Chat inkl. Moderation, CMS-Selbstpflege, Trainer-Rolle, Verwaltung/
+Jahreswechsel, Formular-Integration, Datei-Upload, Evaluations-Export, zweite
+Benachrichtigungs-Variante.
 
-## Empfohlenes Vorgehen
-**Workshop → MVP-Festlegung → Angebot → Phase 1+2 zuerst** (Fundament + Live-Kommunikation),
-danach iterativ Phase 3–5. So entsteht früh ein nutzbares System.
-
----
-
-*Preise/Tagessatz/Zeitplan:* ____________________________
+## Preis-Zusammenfassung
+- **Version 1 (Pilot), Festpreis:** **20.000 €**
+- **Wartung & Support Jahr 1:** 4.800 € / **9.600 €** / 18.000 € (Paket wählbar)
+- **Ausbau B/C:** später, ~24.000–44.000 € je Stufe
+- Tagessatz Kalkulationsbasis: 800 €/PT
