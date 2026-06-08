@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Angebot – BildungsTandems</title>
+    <style>
+      :root {
+        --blau: #155a96;
+        --blau6: #1d6fb8;
+        --blau1: #e6eff8;
+        --akzent: #f5a623;
+        --akzent6: #e08c0c;
+        --text: #1c2733;
+        --muted: #5c6b7a;
+        --soft: #8a97a5;
+        --border: #e3e8ef;
+        --bg-alt: #f4f7fb;
+        --gruen: #2f9e6f;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text);
+        font-size: 11px;
+        line-height: 1.5;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .page { padding: 0 4mm; }
+
+      /* ---- Kopf ---- */
+      .head {
+        display: flex; align-items: center; gap: 14px;
+        border-bottom: 3px solid var(--blau); padding-bottom: 14px; margin-bottom: 18px;
+      }
+      .logo {
+        width: 46px; height: 46px; border-radius: 12px; background: var(--blau);
+        color: #fff; display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 18px; letter-spacing: .5px; flex-shrink: 0;
+      }
+      .head h1 { margin: 0; font-size: 20px; color: var(--blau); }
+      .head .sub { margin: 2px 0 0; color: var(--muted); font-size: 11px; }
+      .head .meta { margin-left: auto; text-align: right; font-size: 10px; color: var(--muted); }
+
+      .empf { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 16px; font-size: 10.5px; }
+      .empf .box strong { color: var(--blau); }
+      .empf .label { color: var(--soft); text-transform: uppercase; letter-spacing: .5px; font-size: 8.5px; }
+
+      h2 {
+        font-size: 13px; color: var(--blau); margin: 18px 0 8px;
+        border-left: 4px solid var(--akzent); padding-left: 8px;
+      }
+      p { margin: 0 0 8px; }
+      .muted { color: var(--muted); }
+      .lead { background: var(--bg-alt); border-radius: 8px; padding: 10px 12px; margin-bottom: 6px; }
+
+      table { width: 100%; border-collapse: collapse; margin: 6px 0 4px; font-size: 10px; }
+      th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+      th { background: var(--blau1); color: var(--blau); font-weight: 700; }
+      td.r, th.r { text-align: right; white-space: nowrap; }
+      td.c, th.c { text-align: center; }
+      tr.sum td { background: var(--bg-alt); font-weight: 800; border-top: 2px solid var(--blau); }
+      .preis { color: var(--blau); font-weight: 800; }
+
+      .pill { display: inline-block; font-weight: 800; font-size: 9px; padding: 1px 7px; border-radius: 999px; }
+      .ja { background: #e2f4ec; color: var(--gruen); }
+      .basis { background: #fdf0d6; color: var(--akzent6); }
+      .spaeter { background: var(--bg-alt); color: var(--soft); }
+
+      .kpis { display: flex; gap: 10px; margin: 10px 0; }
+      .kpi { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+      .kpi .z { display: block; font-size: 16px; font-weight: 800; color: var(--blau); }
+      .kpi .l { font-size: 9px; color: var(--muted); }
+
+      .note { font-size: 9px; color: var(--soft); }
+      .footer { margin-top: 18px; border-top: 1px solid var(--border); padding-top: 8px;
+        font-size: 8.5px; color: var(--soft); display: flex; justify-content: space-between; }
+      .empfohlen { position: relative; }
+      .empfohlen td { background: #eef6ef; }
+      .tag-empf { font-size: 8px; font-weight: 800; color: var(--gruen); }
+      .avoid-break { break-inside: avoid; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="head">
+        <div class="logo">BT</div>
+        <div>
+          <h1>Angebot – BildungsTandems</h1>
+          <p class="sub">Digitale Begleit-App für das Peer-Learning-Programm (ZSB)</p>
+        </div>
+        <div class="meta">
+          Stand: 4. Juni 2026<br />
+          Gültig bis: 31. Juli 2026
+        </div>
+      </div>
+
+      <div class="empf">
+        <div class="box">
+          <div class="label">Für</div>
+          <strong>Zukunftsstiftung Bildung</strong><br />
+          z. Hd. Sophie<br />
+          Peer-Learning-Programme
+        </div>
+        <div class="box" style="text-align:right">
+          <div class="label">Von</div>
+          <strong>Benjamin Lambeck</strong><br />
+          [Anschrift / Kontakt]<br />
+          [E-Mail · Telefon]
+        </div>
+      </div>
+
+      <p class="lead">
+        Auf Basis eures Lastenhefts und unseres Termins schlagen wir einen
+        <strong>pilotfähigen ersten Schritt im Rahmen des verfügbaren Budgets (20.000&nbsp;€)</strong>
+        vor: Der bereits erstellte, klickbare Prototyp wird mit echtem Backend, Login und
+        Datenschutz-Basis „echt“ gemacht – startklar für einen Pilot an 1–2 Schulen.
+        Spätere Ausbaustufen sind als Roadmap angelegt.
+      </p>
+
+      <h2>1 · Version 1 – „Pilot“ (Festpreis 20.000 €)</h2>
+      <p class="muted">
+        Fokus: Schüler:innen/Coaches &amp; Koordination · Kernflüsse Termine, Material,
+        Lernpfade, Feedback. Günstig, weil Oberfläche und Datenschicht bereits stehen –
+        es geht v. a. um die Backend-Anbindung. Kalkulationsbasis 800 €/PT.
+      </p>
+      <table class="avoid-break">
+        <thead><tr><th>Arbeitspaket</th><th class="r">PT</th></tr></thead>
+        <tbody>
+          <tr><td>Supabase EU aufsetzen + Datenmodell/Migration</td><td class="r">5</td></tr>
+          <tr><td>Datenschicht real anbinden (UI bleibt 1:1)</td><td class="r">4</td></tr>
+          <tr><td>Login + sicherer Einladungs-/Onboarding-Flow (Coach + Koordination)</td><td class="r">4</td></tr>
+          <tr><td>Rollen-/Schulrechte serverseitig (RLS)</td><td class="r">3</td></tr>
+          <tr><td>Erinnerungen live – eine Variante (Web-Push oder E-Mail)</td><td class="r">3</td></tr>
+          <tr><td>DSGVO-Basics (EU, Einwilligungen, Datensparsamkeit, Lösch-Konzept)</td><td class="r">2</td></tr>
+          <tr><td>Deployment/Betrieb + Abnahme + Übergabe/Doku</td><td class="r">3</td></tr>
+          <tr><td>Projektleitung / Puffer</td><td class="r">1</td></tr>
+          <tr class="sum"><td>Summe</td><td class="r">25 PT · 20.000 €</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Der bereits erstellte Prototyp (≈ 8–15 PT) wird als Vorleistung eingebracht.</p>
+
+      <h2>2 · Funktionsübersicht – was ist wann enthalten?</h2>
+      <p class="note">
+        <span class="pill ja">enthalten</span>
+        <span class="pill basis">Basis – Ausbau später</span>
+        <span class="pill spaeter">Folgebudget</span>
+      </p>
+      <table>
+        <thead>
+          <tr><th>Funktion</th><th class="c">Prototyp</th><th class="c">V1 – Pilot (20k)</th><th class="c">Ausbau</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Echtes Login &amp; Rollen (Coach / Koordination / Admin)</td><td class="c">Demo</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>Termine sehen/vorschlagen/bestätigen + Detail + Doku</td><td class="c">✓</td><td class="c"><span class="pill ja">live</span></td><td class="c"></td></tr>
+          <tr><td>Kalenderansicht</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>Erinnerungen</td><td class="c">Demo</td><td class="c"><span class="pill basis">1 Variante</span></td><td class="c"><span class="pill spaeter">2. Variante</span></td></tr>
+          <tr><td>Materialien (Suche, Filter, Tags, zuletzt)</td><td class="c">✓</td><td class="c"><span class="pill ja">live</span></td><td class="c"></td></tr>
+          <tr><td>Zeitgesteuerte Freischaltung von Inhalten</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>Lernpfade (Stepper, Quiz, Vorlesen)</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>FAQ (durchsuchbar, kategorisiert)</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>Reflexion + tägliches Feedback + „Hilfe nötig?“</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>Auswertung / Diagramme (je Schule/Zeitraum)</td><td class="c">✓</td><td class="c"><span class="pill basis">Basis</span></td><td class="c"><span class="pill spaeter">Export/Trends</span></td></tr>
+          <tr><td>Info-Kanal Lehrkraft → Coach</td><td class="c">✓</td><td class="c"><span class="pill ja">live</span></td><td class="c"></td></tr>
+          <tr><td>Gruppen-/Direkt-Chat inkl. Moderation/Meldefunktion</td><td class="c">Mock</td><td class="c">—</td><td class="c"><span class="pill spaeter">Kinderschutz</span></td></tr>
+          <tr><td>Programm-Zeitstrahl + Coach-Zertifikat (PDF)</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+          <tr><td>Formulare (Status / JotForm-Integration)</td><td class="c">Mock</td><td class="c">—</td><td class="c"><span class="pill spaeter">ja</span></td></tr>
+          <tr><td>Verwaltung: Schulen anlegen, Trainer zuweisen, Jahreswechsel</td><td class="c">—</td><td class="c">—</td><td class="c"><span class="pill spaeter">ja</span></td></tr>
+          <tr><td>Trainer-Rolle (ZSB)</td><td class="c">—</td><td class="c">—</td><td class="c"><span class="pill spaeter">ja</span></td></tr>
+          <tr><td>CMS-Selbstpflege / Datei-Upload</td><td class="c">—</td><td class="c"><span class="pill basis">wir pflegen</span></td><td class="c"><span class="pill spaeter">Self-Service</span></td></tr>
+          <tr><td>DSGVO: EU-Hosting, Datensparsamkeit, Einwilligungen</td><td class="c">konzipiert</td><td class="c"><span class="pill ja">Basis</span></td><td class="c"><span class="pill spaeter">AVV, Self-Service</span></td></tr>
+          <tr><td>Evaluations-Export (TU Dortmund)</td><td class="c">—</td><td class="c">—</td><td class="c"><span class="pill spaeter">ja</span></td></tr>
+          <tr><td>PWA installierbar + Offline-Lesen</td><td class="c">✓</td><td class="c"><span class="pill ja">ja</span></td><td class="c"></td></tr>
+        </tbody>
+      </table>
+
+      <h2>3 · Wartung &amp; Support – Jahr 1</h2>
+      <p class="muted">Empfohlen, da der Pilot über ein Schuljahr läuft: Betrieb (Monitoring),
+        Sicherheits-/Abhängigkeits-Updates und Fehlerbehebung.</p>
+      <table class="avoid-break">
+        <thead><tr><th>Paket</th><th>Leistung</th><th class="r">€/Monat</th><th class="r">Jahr 1</th></tr></thead>
+        <tbody>
+          <tr><td>Basis</td><td>Betrieb, Security-/Dependency-Updates, kritische Bugfixes, E-Mail-Support</td><td class="r">400</td><td class="r">4.800 €</td></tr>
+          <tr class="empfohlen"><td>Standard <span class="tag-empf">★ empfohlen</span></td><td>Basis + kleine Anpassungen + Inhalts-Support + schnellere Reaktion</td><td class="r">800</td><td class="r preis">9.600 €</td></tr>
+          <tr><td>Pilot-Begleitung</td><td>Standard + Weiterentwicklungs-Kontingent (~2 PT/Monat) im Schuljahr</td><td class="r">1.500</td><td class="r">18.000 €</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Optional einmalig: Einführung/Schulung der Koordinator:innen (½–1 Tag) ~400–800 €.</p>
+
+      <h2>4 · Roadmap Ausbau (späteres Budget, z. B. RAG-Stiftung)</h2>
+      <table class="avoid-break">
+        <thead><tr><th>Stufe</th><th>Inhalt</th><th class="r">Aufwand</th><th class="r">Orientierung</th></tr></thead>
+        <tbody>
+          <tr><td>B – MVP+</td><td>Live-Gruppenchat + Moderation, CMS-Light, Auswertung-Ausbau, 2. Benachrichtigung</td><td class="r">30–45 PT</td><td class="r">24.000–36.000 €</td></tr>
+          <tr><td>C – Vollausbau</td><td>Trainer-Rolle, Verwaltung/Jahreswechsel, Formular-Integration, Storage, Evaluations-Export, Barrierefreiheit/Last, Tests</td><td class="r">40–55 PT</td><td class="r">32.000–44.000 €</td></tr>
+        </tbody>
+      </table>
+
+      <h2>5 · Preis-Zusammenfassung</h2>
+      <div class="kpis">
+        <div class="kpi"><span class="z">20.000 €</span><span class="l">Version 1 (Pilot), Festpreis</span></div>
+        <div class="kpi"><span class="z">9.600 €</span><span class="l">Support „Standard“, Jahr 1</span></div>
+        <div class="kpi"><span class="z">≈ 30.000 €</span><span class="l">Jahr-1-Gesamt (Aufbau + Support)</span></div>
+      </div>
+
+      <h2>6 · Rahmen</h2>
+      <table class="avoid-break">
+        <tbody>
+          <tr><td style="width:30%"><strong>Betriebskosten</strong> (beim Kunden)</td><td>Supabase EU im Pilot meist kostenlos (Free-Tier), bei Bedarf ~25 €/Monat · Mailversand gering.</td></tr>
+          <tr><td><strong>Annahmen</strong></td><td>Inhalte (Material, FAQ, Lernpfade) liefert die ZSB · Pilot an 1–2 Schulen · Datensparsamkeit (Coachees nur Vornamen) · Eltern-Einwilligungen organisatorisch durch die ZSB.</td></tr>
+          <tr><td><strong>Nicht im Pilot</strong></td><td>Gruppen-/Direkt-Chat inkl. Moderation, CMS-Selbstpflege, Trainer-Rolle, Verwaltung/Jahreswechsel, Formular-Integration, Datei-Upload, Evaluations-Export, zweite Benachrichtigungs-Variante (→ Roadmap).</td></tr>
+        </tbody>
+      </table>
+
+      <div class="footer">
+        <span>BildungsTandems · Angebot (Grundlage) · vertraulich</span>
+        <span>Kalkulationsbasis 800 €/PT · finaler Umfang nach gemeinsamem Workshop</span>
+      </div>
+    </div>
+  </body>
+</html>
