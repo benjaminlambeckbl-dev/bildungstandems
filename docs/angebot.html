@@ -5,16 +5,17 @@
     <title>Angebot – BildungsTandems</title>
     <style>
       :root {
-        --blau: #155a96;
-        --blau6: #1d6fb8;
-        --blau1: #e6eff8;
-        --akzent: #f5a623;
-        --akzent6: #e08c0c;
-        --text: #1c2733;
+        /* Coachingspace-CI: Navy + Orange */
+        --blau: #1d1f4e;
+        --blau6: #2c2f70;
+        --blau1: #e9eaf3;
+        --akzent: #f59e1b;
+        --akzent6: #d6850f;
+        --text: #1c2230;
         --muted: #5c6b7a;
         --soft: #8a97a5;
         --border: #e3e8ef;
-        --bg-alt: #f4f7fb;
+        --bg-alt: #f5f6fb;
         --gruen: #2f9e6f;
       }
       * { box-sizing: border-box; }
@@ -32,14 +33,11 @@
       /* ---- Kopf ---- */
       .head {
         display: flex; align-items: center; gap: 14px;
-        border-bottom: 3px solid var(--blau); padding-bottom: 14px; margin-bottom: 18px;
+        border-bottom: 3px solid var(--akzent); padding-bottom: 14px; margin-bottom: 18px;
       }
-      .logo {
-        width: 46px; height: 46px; border-radius: 12px; background: var(--blau);
-        color: #fff; display: flex; align-items: center; justify-content: center;
-        font-weight: 800; font-size: 18px; letter-spacing: .5px; flex-shrink: 0;
-      }
-      .head h1 { margin: 0; font-size: 20px; color: var(--blau); }
+      .logo-img { height: 34px; width: auto; flex-shrink: 0; }
+      .head .titel { margin-left: 4px; }
+      .head h1 { margin: 0; font-size: 19px; color: var(--blau); }
       .head .sub { margin: 2px 0 0; color: var(--muted); font-size: 11px; }
       .head .meta { margin-left: auto; text-align: right; font-size: 10px; color: var(--muted); }
 
@@ -85,13 +83,13 @@
   <body>
     <div class="page">
       <div class="head">
-        <div class="logo">BT</div>
-        <div>
+        <img class="logo-img" src="coachingspace-logo.svg" alt="Coachingspace" />
+        <div class="titel">
           <h1>Angebot – BildungsTandems</h1>
           <p class="sub">Digitale Begleit-App für das Peer-Learning-Programm (ZSB)</p>
         </div>
         <div class="meta">
-          Stand: 4. Juni 2026<br />
+          Stand: 10. Juni 2026<br />
           Gültig bis: 31. Juli 2026
         </div>
       </div>
@@ -105,9 +103,9 @@
         </div>
         <div class="box" style="text-align:right">
           <div class="label">Von</div>
-          <strong>Benjamin Lambeck</strong><br />
-          [Anschrift / Kontakt]<br />
-          [E-Mail · Telefon]
+          <strong>Coachingspace GmbH</strong><br />
+          Stöcken 7 · 42897 Remscheid<br />
+          Tel. 02191 93 48 963 · info@coachingspace.net
         </div>
       </div>
 
@@ -214,8 +212,8 @@
       </table>
 
       <div class="footer">
-        <span>BildungsTandems · Angebot (Grundlage) · vertraulich</span>
-        <span>Kalkulationsbasis 800 €/PT · finaler Umfang nach gemeinsamem Workshop</span>
+        <span>Coachingspace GmbH · Stöcken 7 · 42897 Remscheid · Tel. 02191 93 48 963 · info@coachingspace.net</span>
+        <span>Kalkulationsbasis 800 €/PT · finaler Umfang nach Workshop · vertraulich</span>
       </div>
     </div>
   </body>

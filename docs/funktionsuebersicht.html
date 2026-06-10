@@ -5,18 +5,17 @@
     <title>Funktionsübersicht – BildungsTandems</title>
     <style>
       :root {
-        --blau:#155a96; --blau1:#e6eff8; --akzent6:#e08c0c; --gruen:#2f9e6f;
-        --text:#1c2733; --muted:#5c6b7a; --soft:#8a97a5; --border:#e3e8ef; --bg:#f4f7fb;
+        --blau:#1d1f4e; --blau1:#e9eaf3; --akzent:#f59e1b; --akzent6:#d6850f; --gruen:#2f9e6f;
+        --text:#1c2230; --muted:#5c6b7a; --soft:#8a97a5; --border:#e3e8ef; --bg:#f5f6fb;
       }
       *{box-sizing:border-box}
       html,body{margin:0;padding:0}
       body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;color:var(--text);
         font-size:9.3px;line-height:1.32;-webkit-print-color-adjust:exact;print-color-adjust:exact}
       .page{padding:0 3mm}
-      .head{display:flex;align-items:center;gap:10px;border-bottom:2.5px solid var(--blau);
+      .head{display:flex;align-items:center;gap:10px;border-bottom:2.5px solid var(--akzent);
         padding-bottom:8px;margin-bottom:8px}
-      .logo{width:34px;height:34px;border-radius:9px;background:var(--blau);color:#fff;
-        display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+      .logo-img{height:28px;width:auto;flex-shrink:0}
       h1{margin:0;font-size:15px;color:var(--blau)}
       .sub{margin:1px 0 0;color:var(--muted);font-size:9px}
       .legende{margin-left:auto;font-size:8px;color:var(--muted);text-align:right}
@@ -37,7 +36,7 @@
   <body>
     <div class="page">
       <div class="head">
-        <div class="logo">BT</div>
+        <img class="logo-img" src="coachingspace-logo.svg" alt="Coachingspace" />
         <div>
           <h1>Funktionsübersicht</h1>
           <div class="sub">BildungsTandems – was steckt im Piloten (Version 1), was kommt später?</div>
@@ -83,7 +82,7 @@
       </table>
 
       <div class="foot">
-        <span>BildungsTandems · Funktionsübersicht · Stand Juni 2026</span>
+        <span>Coachingspace GmbH · Stöcken 7 · 42897 Remscheid · info@coachingspace.net</span>
         <span>Version 1 = Festpreis 20.000 € · finaler Umfang nach Workshop</span>
       </div>
     </div>
