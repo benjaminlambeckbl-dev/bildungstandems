@@ -36,7 +36,10 @@ Rahmen passt**, plus einer Roadmap für spätere Ausbaustufen und einem optional
 Wartungs-/Supportpaket fürs erste Schuljahr.
 
 Herzliche Grüße
-[Benjamin]
+Benjamin Lambeck
+
+Coachingspace GmbH · Stöcken 7 · 42897 Remscheid
+Tel. 02191 93 48 963 · info@coachingspace.net
 
 ---
 
@@ -52,4 +55,7 @@ Für den Workshop passt uns **[Do, 11. Juni, 13:30–16:30 Uhr]** gut (Fr, 12. J
 vormittags ginge auch). Sag kurz, was euch passt – Angebot bereiten wir danach vor.
 
 Herzliche Grüße
-[Benjamin]
+Benjamin Lambeck
+
+Coachingspace GmbH · Stöcken 7 · 42897 Remscheid
+Tel. 02191 93 48 963 · info@coachingspace.net
