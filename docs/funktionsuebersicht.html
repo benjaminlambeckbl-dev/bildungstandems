@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Funktionsübersicht – BildungsTandems</title>
+    <style>
+      :root {
+        --blau:#155a96; --blau1:#e6eff8; --akzent6:#e08c0c; --gruen:#2f9e6f;
+        --text:#1c2733; --muted:#5c6b7a; --soft:#8a97a5; --border:#e3e8ef; --bg:#f4f7fb;
+      }
+      *{box-sizing:border-box}
+      html,body{margin:0;padding:0}
+      body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;color:var(--text);
+        font-size:9.3px;line-height:1.32;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .page{padding:0 3mm}
+      .head{display:flex;align-items:center;gap:10px;border-bottom:2.5px solid var(--blau);
+        padding-bottom:8px;margin-bottom:8px}
+      .logo{width:34px;height:34px;border-radius:9px;background:var(--blau);color:#fff;
+        display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+      h1{margin:0;font-size:15px;color:var(--blau)}
+      .sub{margin:1px 0 0;color:var(--muted);font-size:9px}
+      .legende{margin-left:auto;font-size:8px;color:var(--muted);text-align:right}
+      .pill{display:inline-block;font-weight:800;font-size:7.5px;padding:1px 6px;border-radius:999px}
+      .ja{background:#e2f4ec;color:var(--gruen)} .basis{background:#fdf0d6;color:var(--akzent6)}
+      .spaeter{background:var(--bg);color:var(--soft)}
+      h2{font-size:10.5px;color:var(--blau);margin:9px 0 4px;border-left:4px solid var(--blau);padding-left:7px}
+      h2.aus{border-left-color:var(--soft);color:var(--muted)}
+      table{width:100%;border-collapse:collapse}
+      td{padding:3px 7px;border-bottom:1px solid var(--border);vertical-align:top}
+      td.fn{width:27%;font-weight:700;color:var(--text)}
+      td.st{width:10%;text-align:right;white-space:nowrap}
+      tr:nth-child(even) td{background:#fafbfd}
+      .foot{margin-top:8px;border-top:1px solid var(--border);padding-top:5px;
+        font-size:7.5px;color:var(--soft);display:flex;justify-content:space-between}
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="head">
+        <div class="logo">BT</div>
+        <div>
+          <h1>Funktionsübersicht</h1>
+          <div class="sub">BildungsTandems – was steckt im Piloten (Version 1), was kommt später?</div>
+        </div>
+        <div class="legende">
+          <span class="pill ja">Pilot</span> enthalten ·
+          <span class="pill basis">Basis</span> Ausbau folgt ·
+          <span class="pill spaeter">Ausbau</span> Folgebudget
+        </div>
+      </div>
+
+      <h2>Im Piloten enthalten – Version 1 (Festpreis 20.000 €)</h2>
+      <table>
+        <tr><td class="fn">Login &amp; Rollen</td><td>Sichere Anmeldung; jede Person sieht nur, was zu ihrer Rolle (Coach / Koordination / Admin) gehört.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Termine</td><td>Treffen sehen, vorschlagen, bestätigen und nach dem Treffen kurz dokumentieren (wer war da?).</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Kalenderansicht</td><td>Alle Termine übersichtlich im Monatskalender, mit einem Tipp auf den Tag.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Erinnerungen</td><td>Automatischer Hinweis vor einem Treffen. Im Pilot über <b>einen</b> Kanal (Push <i>oder</i> E-Mail).</td><td class="st"><span class="pill basis">Basis</span></td></tr>
+        <tr><td class="fn">Materialien</td><td>Dokumente, Videos &amp; Vorlagen mit Suche, Kategorien und Schlagworten; „zuletzt geöffnet“.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Zeitgesteuerte Freischaltung</td><td>Inhalte werden passend zur Phase im Schuljahr sichtbar (vorher „ab Datum“ gesperrt).</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Lernpfade</td><td>Kleine Lern-Module mit Mini-Quiz und Vorlese-Funktion; der Fortschritt wird gespeichert.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">FAQ</td><td>Durchsuchbare, kategorisierte Sammlung häufiger Fragen zur schnellen Selbsthilfe.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Reflexion</td><td>Coaches halten nach einem Treffen fest, was gut lief und was schwierig war.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Tägliches Kurz-Feedback</td><td>Ein-Klick-Stimmungscheck „Wie lief es heute?“ – schnell und niedrigschwellig.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">„Hilfe nötig?“</td><td>Coach fordert mit einem Knopf Unterstützung an; die Koordination wird informiert.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Auswertung</td><td>Diagramme zu Stimmung &amp; Feedback je Schule und Zeitraum. Daten-Export folgt später.</td><td class="st"><span class="pill basis">Basis</span></td></tr>
+        <tr><td class="fn">Info-Kanal Lehrkraft → Coach</td><td>Lehrkraft schickt Infos/Absagen an Coaches – einseitig (noch kein offener Chat).</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Programm-Zeitstrahl</td><td>Überblick über das Programmjahr von Auftakt bis Abschlussfeier.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Coach-Zertifikat</td><td>Druckbare Urkunde (PDF) zum Abschluss des Programms.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">App-Installation (PWA)</td><td>Wie eine App auf dem Handy installierbar; Inhalte sind auch offline lesbar.</td><td class="st"><span class="pill ja">Pilot</span></td></tr>
+        <tr><td class="fn">Datenschutz-Basis</td><td>EU-Server, Datensparsamkeit (Kinder nur mit Vornamen), Einwilligungen. Self-Service folgt.</td><td class="st"><span class="pill basis">Basis</span></td></tr>
+        <tr><td class="fn">Inhaltspflege</td><td>Im Pilot pflegen wir die Inhalte für euch; eine Selbst-Pflege-Oberfläche kommt später.</td><td class="st"><span class="pill basis">Basis</span></td></tr>
+      </table>
+
+      <h2 class="aus">Später – Ausbau (Roadmap, Folgebudget)</h2>
+      <table>
+        <tr><td class="fn">Gruppen-/Direkt-Chat</td><td>Chat in Kohorte &amp; Kollegium inkl. Moderation/Meldefunktion – bei Minderjährigen sicherheitskritisch.</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+        <tr><td class="fn">2. Erinnerungs-Variante</td><td>Der zweite Kanal zusätzlich (z. B. E-Mail ergänzend zu Push).</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+        <tr><td class="fn">Formulare</td><td>Zugewiesene Formulare (z. B. JotForm) mit Status „offen/erledigt“.</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+        <tr><td class="fn">Verwaltung</td><td>Schulen anlegen, Trainer zuweisen, Jahreswechsel der Nutzer:innen.</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+        <tr><td class="fn">Trainer-Rolle (ZSB)</td><td>Eigene Rolle für die Schulbegleitung durch die Stiftung.</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+        <tr><td class="fn">Inhalts-CMS &amp; Datei-Upload</td><td>Inhalte komplett selbst anlegen und Dateien hochladen.</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+        <tr><td class="fn">Evaluations-Export</td><td>Anonymisierter Datenexport für die wissenschaftliche Begleitung (TU Dortmund).</td><td class="st"><span class="pill spaeter">Ausbau</span></td></tr>
+      </table>
+
+      <div class="foot">
+        <span>BildungsTandems · Funktionsübersicht · Stand Juni 2026</span>
+        <span>Version 1 = Festpreis 20.000 € · finaler Umfang nach Workshop</span>
+      </div>
+    </div>
+  </body>
+</html>
