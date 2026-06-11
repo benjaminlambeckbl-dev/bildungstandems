@@ -1,98 +1,77 @@
-# Berechtigungsmatrix – Rollen × Features (Lastenheft ZSB)
+# Berechtigungsmatrix – BildungsTandems / ZSB (Workshop-Stand 11.06.2026)
 
-**Rollen (laut Lastenheft 2.1 / 4.6):**
-Admin (ZSB) · Trainer:in (ZSB, Begleitung) · Koordination (Schule, primäre Zielgruppe) ·
-Schüler:in (perspektivisch).
+**Rollen:** Admin (ZSB) · Trainer:in · Koordination (Lehrkraft) · Schüler:in (Coach).
+**Doppelrollen** möglich (z. B. Admin + Trainer:in) – Rechte addieren sich.
+*Vorschlag zum Bestätigen/Anpassen durch die ZSB.* (Detail + Direktchat: `Berechtigungsmatrix.xlsx`)
 
-**Legende:**
-✅ Verwalten (anlegen/bearbeiten/löschen, ggf. systemweit) ·
-🟢 Nutzen/Schreiben (eigener Bereich) ·
-👁️ Nur lesen/einsehen ·
-— kein Zugriff ·
-◐ perspektivisch/später (Schüler:innen)
+**Legende:** ✅ Verwalten (anlegen/bearbeiten/löschen) · 🟢 Beitragen (erstellen/schreiben, eigener Bereich) · 👁️ Ansehen · — kein Zugriff
+*Geltungsbereich in Klammern: alle / betreute Schulen / Schule / eigene.*
 
-> *Geltungsbereich:* Admin = systemweit · Trainer = nur **betreute Schulen** ·
-> Koordination = nur **eigene Schule** · durchgesetzt über rollenbasierten Zugriff (RLS, DSGVO).
+## 1 · Material & Inhalte
+| Feature | Admin | Trainer | Koordination | Schüler:in | Hinweis |
+|---|:--:|:--:|:--:|:--:|---|
+| Material ansehen / suchen | ✅ | 👁️ (betreute) | 👁️ | 👁️ (Teilmenge) | Suche über Kategorien/Tags (keine PDF-Volltextsuche) |
+| Material **hochladen & taggen** | ✅ | — | — | — | **Nur Admin** (kuratierte Qualität) |
+| Sichtbarkeit/Freigabe festlegen | ✅ | — | — | — | „alle“ oder „nur Lehrkräfte“ |
+| Zeitgesteuerte Freischaltung | ✅ | — | — | — | z. B. Übergangsmaterial erst im letzten Quartal |
+| Kategorien & Tags pflegen | ✅ | — | — | — | feste Kategorien, zentral |
 
----
+## 2 · Termine
+| Feature | Admin | Trainer | Koordination | Schüler:in | Hinweis |
+|---|:--:|:--:|:--:|:--:|---|
+| Globale Termine | ✅ | — | — | — | Admin → alle; Empfänger nur zu-/absagen |
+| Trainingstermine | ✅ | 🟢 (betreute) | 👁️ | — | Trainer:in, ~3/Jahr |
+| Tandem-Termine | ✅ | — | 🟢 (eigene Schule) | — | Partnerschule sieht automatisch |
+| Termine ansehen | ✅ (alle) | 👁️ (betreute) | 👁️ (Schule) | 👁️ (eigene) | |
+| Teilnahme zu-/absagen | 🟢 | 🟢 | 🟢 | 🟢 (eigene) | |
+| Warnung fehlende Termine | ✅ | 👁️ (betreute) | — | — | Admin-Dashboard / Ampel gelb |
 
-## 1 · Lernen & Inhalte (4.1)
+## 3 · Kommunikation (Jugendschutz)
+| Feature | Admin | Trainer | Koordination | Schüler:in | Hinweis |
+|---|:--:|:--:|:--:|:--:|---|
+| Event-Nachrichten erhalten | 👁️ | 👁️ | 👁️ | 👁️ | Termin abgesagt/verschoben/neu |
+| DN Koord ↔ Trainer | ✅ | 🟢 | 🟢 | — | beide Richtungen |
+| DN Koord ↔ Koord | ✅ | — | 🟢 | — | nur Koordinationen einer Tandem-Schule |
+| DN Trainer ↔ Admin | 🟢 | 🟢 | — | — | |
+| **Schüler-Chat** | — | — | — | — | **Bewusst NICHT vorgesehen** |
+| Gruppenchat Tandem-Teams | ✅ | — | 🟢 | — | OFFEN – wg. Jugendschutz zu klären |
 
-| Feature | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| Materialien ansehen / nutzen (Suche, Tags) | ✅ | 🟢 | 🟢 | ◐ |
-| Inhalte/Materialien pflegen (CMS) | ✅ | 🟢 | 👁️ | — |
-| Zeitgesteuerte Freischaltung steuern | ✅ | 🟢 | — | — |
-| Schuljahres-Phasen/Struktur pflegen | ✅ | 🟢 | 👁️ | — |
-| FAQ nutzen (Selbsthilfe) | 🟢 | 🟢 | 🟢 | ◐ |
-| FAQ pflegen | ✅ | 🟢 | — | — |
-| Onboarding durchlaufen | — | 🟢 | 🟢 | ◐ |
+## 4 · Feedback & Monitoring
+| Feature | Admin | Trainer | Koordination | Schüler:in | Hinweis |
+|---|:--:|:--:|:--:|:--:|---|
+| Termin-Feedback (Smiley) | — | 🟢 | 🟢 | 🟢 | bei „schlecht“ Textfeld |
+| Reflexion schreiben | — | — | 🟢 | — | optional |
+| Ampel-Umfrage (6 Wochen) | — | — | 🟢 | — | grün/gelb/rot |
+| „Hilfe nötig?“ / SOS | — | — | 🟢 | 🟢 | nicht-akut → ZSB/Koordination |
+| Monitoring/Ampel-Übersicht | ✅ (alle) | 👁️ (betreute) | 👁️ (Schule) | — | |
+| Auswertung / Diagramme | ✅ (alle) | 👁️ (betreute) | 👁️ (Schule) | — | |
 
-## 2 · Kommunikation / Chat (4.2)
+## 5 · Export & Zertifikate
+| Feature | Admin | Trainer | Koordination | Schüler:in | Hinweis |
+|---|:--:|:--:|:--:|:--:|---|
+| Daten-/Excel-Export | ✅ | — | — | — | Statistiken, Stimmung, Namen |
+| Zertifikat erstellen/abrufen | ✅ | — | 🟢 (eigene SuS) | 👁️ (eigenes) | |
 
-| Feature | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| Schulgruppen-Chat | ✅ | 🟢 | 🟢 | ◐ |
-| Partnerschulgruppen-Chat | ✅ | 🟢 | 🟢 | ◐ |
-| Frei definierbare Gruppen | ✅ | 🟢 | 👁️ | — |
-| Direktnachrichten (Details s. u.) | ✅ | 🟢 | 🟢 | ◐ |
-| Wichtige Nachricht „Sticky“ | ✅ | 🟢 | 🟢 | — |
-
-### Direktchat – wer darf wen anschreiben? (4.2)
-
-| Initiator ↓ \ Empfänger → | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| **Admin** | – | ✅ | ✅ | ✅ |
-| **Trainer** | ✅ | (✅) | ✅ | — |
-| **Koordination** | ✅ | ✅ | ✅ | ✅ |
-| **Schüler:in** | — | — | ↩︎ nur antworten | ◐ |
-
-*↩︎ Schüler:innen starten keinen Chat mit Erwachsenen, dürfen aber auf eine von der
-Koordination eröffnete Unterhaltung antworten. Lehrkraft↔Schüler-Chats sind für die
-Koordination einsehbar (Kinderschutz).*
-
-## 3 · Organisation – Termine & Kalender (4.3)
-
-| Feature | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| Termine ansehen | ✅ alle | 🟢 betreute | 🟢 Schule | ◐ eigene |
-| Termine anlegen/verwalten | ✅ | 🟢 global/Training | 🟢 Schule | ◐ vorschlagen |
-| Kalender (persönlich/schul/global) | ✅ | 🟢 | 🟢 | ◐ |
-| Terminabstimmung | ✅ | 🟢 | 🟢 | ◐ |
-| Erinnerungen erhalten (Push/E-Mail) | 🟢 | 🟢 | 🟢 | ◐ |
-
-## 4 · Feedback & Monitoring (4.4)
-
-| Feature | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| Feedback geben („Wie lief es?“) | — | — | 🟢 | ◐ |
-| Bedarfsmeldung („Hilfe nötig?“) | — | — | 🟢 | ◐ |
-| Auswertung/Diagramme sehen | ✅ alle | 🟢 betreute | 🟢 Schule | — |
-
-## 5 · Formulare (4.5)
-
-| Feature | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| Formulare ausfüllen | 🟢 | 🟢 | 🟢 | ◐ |
-| Formulare zuweisen / Status verwalten | ✅ | 🟢 betreute | 🟢 Schule | — |
-
-## 6 · Benutzer- & Rollenverwaltung (4.6)
-
-| Feature | Admin | Trainer | Koordination | Schüler:in |
-|---|:--:|:--:|:--:|:--:|
-| Schulen anlegen | ✅ | — | — | — |
-| Nutzer einladen/zuweisen | ✅ | 🟢 betreute | 🟢 eigene Schule | — |
-| Trainer zuweisen | ✅ | — | — | — |
-| Jahreswechsel-Logik | ✅ | — | — | — |
-| Rollen-/Rechteverwaltung | ✅ | — | — | — |
+## 6 · Nutzer-, Schul- & Jahresverwaltung
+| Feature | Admin | Trainer | Koordination | Schüler:in | Hinweis |
+|---|:--:|:--:|:--:|:--:|---|
+| Schulen anlegen/bearbeiten | ✅ | — | — | — | |
+| Schul-Kooperation zuordnen (1:n) | ✅ | — | — | — | 1 weiterf. ↔ bis 3 Grundschulen |
+| Koordinator:innen/Trainer:innen anlegen | ✅ | — | — | — | + Login-Daten |
+| Trainer ↔ Schule zuweisen/auflösen | ✅ | — | — | — | Trainer:in kann nicht selbst lösen |
+| Schüler-Registrierung freigeben/sperren | ✅ | — | 🟢 (eigene Schule) | — | QR; Koordination bestätigt einzeln |
+| Schüler entfernen/korrigieren | ✅ | — | 🟢 (eigene) | — | mit Verlauf/Historie |
+| Schuljahr / Jahreswechsel verwalten | ✅ | — | — | — | Enddatum, Auto-Löschung SuS |
 
 ---
 
-## Hinweise / Mapping zum Prototyp
-- **Schüler:in** ist im Lastenheft „perspektivisch" – im aktuellen Prototyp bereits als
-  **Coach** umgesetzt (Termine, Material, Lernpfade, Feedback).
-- **Koordination** ≈ im Prototyp **Lehrkraft/Koordination**.
-- **Trainer:in (ZSB)** ist im Prototyp **noch nicht** abgebildet (dort bündelt **Admin**
-  die ZSB-Rolle) → eigene Rolle = Roadmap/Ausbau.
-- Querschnitt (alle Rollen): rollenbasierter Zugriff, EU-Hosting, Datensparsamkeit (DSGVO).
-- Zellen mit Geltungsbereich („betreute/Schule/eigene") werden serverseitig per RLS erzwungen.
+## Direktchat – wer darf wen anschreiben?
+| Initiator \ Empfänger | Admin | Trainer | Koordination | Schüler:in |
+|---|:--:|:--:|:--:|:--:|
+| **Admin** | – | ja | ja | — |
+| **Trainer** | ja | ja | ja | — |
+| **Koordination** | ja | ja | ja* | — |
+| **Schüler:in** | — | — | — | — |
+
+\* nur zwischen den Koordinationen einer Tandem-Schule. **Schüler:innen: kein Chat** –
+nur event-basierte Vorlage-Nachrichten (Termin abgesagt/verschoben/neu) + SOS.
